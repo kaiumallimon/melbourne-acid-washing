@@ -60,9 +60,17 @@ export function SiteHeader() {
 
   const hasSurface = isOpen || isScrolled
 
+  const handleNavClick = (href: string) => {
+    setIsOpen(false)
+
+    if (pathname === href) {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+    }
+  }
+
   const navigateToContact = () => {
     setIsOpen(false)
-    router.push("/contact")
+    router.push("/contact", { scroll: true })
   }
 
   return (
@@ -80,7 +88,7 @@ export function SiteHeader() {
       <div className="relative mx-auto w-[min(1240px,calc(100%-1.5rem))]">
         <div className="flex h-25 items-center gap-3">
           {/* Logo Section */}
-          <Link href="/" onClick={() => setIsOpen(false)} className="cursor-target flex min-w-0 items-center gap-3 group">
+          <Link href="/" scroll onClick={() => handleNavClick("/")} className="cursor-target flex min-w-0 items-center gap-3 group">
             <span
               className={cn(
                 "inline-flex items-center justify-center transition-all duration-300",
@@ -124,6 +132,8 @@ export function SiteHeader() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  scroll
+                  onClick={() => handleNavClick(link.href)}
                   className={cn(
                     "cursor-target relative rounded-full px-4 py-2 text-sm font-semibold transition-colors",
                     active
@@ -148,6 +158,7 @@ export function SiteHeader() {
           {/* Desktop CTA */}
           <Link
             href="/contact"
+            scroll
             className={cn(
               "cursor-target hidden ml-auto lg:flex items-center justify-center gap-2 py-2 font-semibold border border-transparent bg-primary px-6 text-white hover:bg-[#4b50d7]"
             )}
@@ -217,7 +228,8 @@ export function SiteHeader() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  scroll
+                  onClick={() => handleNavClick(link.href)}
                   style={{ transitionDelay: isOpen ? `${i * 60}ms` : "0ms" }}
                   className={cn(
                     "cursor-target group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-medium transition-all duration-500",
