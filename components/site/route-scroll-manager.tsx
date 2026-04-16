@@ -7,6 +7,12 @@ function scrollStorageKey(routeKey: string) {
   return `scroll:${routeKey}`
 }
 
+function forceTopScroll() {
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" })
+  document.documentElement.scrollTop = 0
+  document.body.scrollTop = 0
+}
+
 export function RouteScrollManager() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -45,9 +51,22 @@ export function RouteScrollManager() {
     const savedY = sessionStorage.getItem(scrollStorageKey(routeKey))
 
     if (isHistoryNavigationRef.current && savedY !== null) {
-      window.scrollTo({ top: Number(savedY), left: 0, behavior: "auto" })
+      const targetY = Number(savedY)
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: targetY, left: 0, behavior: "auto" })
+      })
     } else {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" })
+      forceTopScroll()
+      requestAnimationFrame(() => {
+        forceTopScroll()
+      })
+      window.setTimeout(() => {
+        forceTopScroll()
+      }, 90)
+
+      void import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
+        ScrollTrigger.clearScrollMemory?.()
+      })
     }
 
     isHistoryNavigationRef.current = false
@@ -56,6 +75,7 @@ export function RouteScrollManager() {
 
   useEffect(() => {
     const persistCurrentRouteScroll = () => {
+      if (document.visibilityState !== "hidden") return
       if (!previousRouteRef.current) return
       sessionStorage.setItem(scrollStorageKey(previousRouteRef.current), String(window.scrollY))
     }
