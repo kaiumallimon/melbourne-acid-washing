@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
 
+import { HomeMotion } from "@/components/site/home/home-motion";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import "./globals.css";
@@ -50,6 +51,7 @@ export default function RootLayout({
     <html lang="en" className={`${bodyFont.variable} ${headingFont.variable} h-full antialiased`}>
       <body className="min-h-full bg-background text-foreground">
         <div className="relative flex min-h-screen flex-col">
+          <HomeMotion />
           <SiteHeader />
           <main className="mobile-section-x flex-1">{children}</main>
           <SiteFooter />
