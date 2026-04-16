@@ -1,5 +1,7 @@
 import Link from "next/link"
 import { Clock3, Mail, MapPin, PhoneCall } from "lucide-react"
+import { FaFacebookF, FaWhatsapp } from "react-icons/fa"
+import { FiPhoneCall } from "react-icons/fi"
 import type { ReactNode } from "react"
 
 import { BodyText, SectionTitle } from "@/components/typography"
@@ -43,6 +45,7 @@ export function ContactDetails() {
               "rounded-full border border-transparent bg-primary px-4 text-white hover:bg-primary/85"
             )}
           >
+            <FaWhatsapp className="size-4" />
             WhatsApp Us
           </a>
           <a
@@ -52,7 +55,8 @@ export function ContactDetails() {
               "rounded-full border-slate-300 bg-white px-4 text-slate-700 hover:border-primary/30 hover:bg-[--brand-ice]"
             )}
           >
-            Call Now
+            <FiPhoneCall className="size-4" />
+            Call Us
           </a>
           <Link
             href={FACEBOOK_URL}
@@ -63,6 +67,7 @@ export function ContactDetails() {
               "rounded-full border-slate-300 bg-white px-4 text-slate-700 hover:border-primary/30 hover:bg-[--brand-ice]"
             )}
           >
+            <FaFacebookF className="size-4" />
             Facebook Page
           </Link>
         </div>
