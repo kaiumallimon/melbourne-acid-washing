@@ -11,15 +11,15 @@ export interface TargetCursorProps {
   parallaxOn?: boolean
 }
 
-function detectMobile(): boolean {
+function cursorIsUnsupported(): boolean {
   if (typeof window === "undefined") return true
 
-  const hasTouchScreen = "ontouchstart" in window || navigator.maxTouchPoints > 0
-  const isSmallScreen = window.innerWidth <= 768
-  const mobileRegex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i
-  const isMobileUserAgent = mobileRegex.test(navigator.userAgent.toLowerCase())
+  // Enable the custom cursor only when the device has a fine pointer and hover capability.
+  // This avoids false "mobile" detection on narrow desktop windows/devtools viewports.
+  const hasFinePointer = window.matchMedia("(pointer: fine)").matches
+  const canHover = window.matchMedia("(hover: hover)").matches
 
-  return (hasTouchScreen && isSmallScreen) || isMobileUserAgent
+  return !(hasFinePointer && canHover)
 }
 
 export default function TargetCursor({
@@ -40,7 +40,7 @@ export default function TargetCursor({
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
 
   useEffect(() => {
-    setIsMobile(detectMobile())
+    setIsMobile(cursorIsUnsupported())
   }, [])
 
   useEffect(() => {

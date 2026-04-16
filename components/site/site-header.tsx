@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { Menu, X, ArrowRight } from "lucide-react"
 import { useEffect, useState } from "react"
+import { createPortal } from "react-dom"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -25,6 +26,11 @@ export function SiteHeader() {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   // Handle scroll state for header transparency
   useEffect(() => {
@@ -184,98 +190,106 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {/* Mobile Backdrop Overlay */}
-      <div
-        className={cn(
-          "fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-500 lg:hidden",
-          isOpen ? "opacity-100" : "pointer-events-none opacity-0"
-        )}
-        onClick={() => setIsOpen(false)}
-        aria-hidden="true"
-      />
+      {isMounted
+        ? createPortal(
+            <>
+              <div
+                className={cn(
+                  "fixed inset-0 z-60 bg-slate-950/45 backdrop-blur-md transition-opacity duration-500 lg:hidden",
+                  isOpen ? "opacity-100" : "pointer-events-none opacity-0"
+                )}
+                onClick={() => setIsOpen(false)}
+                aria-hidden="true"
+              />
 
-      {/* Enhanced Mobile Sheet */}
-      <aside
-        className={cn(
-          "fixed inset-y-0 right-0 z-50 w-[min(85vw,380px)] bg-slate-950/95 backdrop-blur-2xl transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden",
-          "border-l border-white/10 shadow-2xl",
-          isOpen ? "translate-x-0" : "translate-x-full"
-        )}
-        role="dialog"
-        aria-modal="true"
-      >
-        <div className="flex h-full flex-col p-6">
-          {/* Sheet Header */}
-          <div className="flex items-center justify-between pb-8">
-            <div className="space-y-1">
-              <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-500">Navigation</p>
-              <div className="h-0.5 w-6 rounded-full bg-[--brand-blue]" />
-            </div>
-            <button
-              type="button"
-              onClick={() => setIsOpen(false)}
-              className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-transform active:scale-95"
-            >
-              <X className="size-5" />
-            </button>
-          </div>
+              <aside
+                className={cn(
+                  "fixed inset-y-0 right-0 z-70 w-[min(85vw,380px)] bg-[linear-gradient(120deg,rgba(4,11,27,0.96),rgba(10,23,51,0.94))] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden",
+                  "isolate border-l border-white/10 shadow-2xl",
+                  isOpen ? "translate-x-0" : "translate-x-full"
+                )}
+                role="dialog"
+                aria-modal="true"
+              >
+                <div className="flex h-full flex-col overflow-y-auto overscroll-contain p-6">
+                  {/* Sheet Header */}
+                  <div className="flex items-center justify-between pb-8">
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-500">Navigation</p>
+                      <div className="h-0.5 w-6 rounded-full bg-[--brand-blue]" />
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setIsOpen(false)}
+                      className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-transform active:scale-95"
+                    >
+                      <X className="size-5" />
+                    </button>
+                  </div>
 
-          {/* Navigation Links with Staggered Slide Effect */}
-          <nav className="flex flex-col gap-2">
-            {NAV_LINKS.map((link, i) => {
-              const active = linkIsActive(pathname, link.href)
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  scroll
-                  onClick={() => handleNavClick(link.href)}
-                  style={{ transitionDelay: isOpen ? `${i * 60}ms` : "0ms" }}
-                  className={cn(
-                    "cursor-target group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-medium transition-all duration-500",
-                    isOpen ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0",
-                    active
-                      ? "bg-white/10 text-white"
-                      : "text-slate-400 hover:bg-white/5 hover:text-white"
-                  )}
-                >
-                  {link.label}
-                  <div className={cn(
-                    "allow-rounded size-1.5 rounded-full transition-all duration-500",
-                    active ? "bg-primary " : "bg-transparent"
-                  )} />
-                </Link>
-              )
-            })}
-          </nav>
+                  {/* Navigation Links with Staggered Slide Effect */}
+                  <nav className="flex flex-col gap-2">
+                    {NAV_LINKS.map((link, i) => {
+                      const active = linkIsActive(pathname, link.href)
+                      return (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          scroll
+                          onClick={() => handleNavClick(link.href)}
+                          style={{ transitionDelay: isOpen ? `${i * 60}ms` : "0ms" }}
+                          className={cn(
+                            "cursor-target group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-medium transition-all duration-500",
+                            isOpen ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0",
+                            active
+                              ? "bg-white/10 text-white"
+                              : "text-slate-400 hover:bg-white/5 hover:text-white"
+                          )}
+                        >
+                          {link.label}
+                          <div
+                            className={cn(
+                              "allow-rounded size-1.5 rounded-full transition-all duration-500",
+                              active ? "bg-primary " : "bg-transparent"
+                            )}
+                          />
+                        </Link>
+                      )
+                    })}
+                  </nav>
 
-          {/* Mobile CTA Section */}
-          <div className={cn(
-            "mt-auto pt-10 transition-all duration-700 delay-300",
-            isOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-          )}>
-            <Button
-              type="button"
-              size="lg"
-              onClick={navigateToContact}
-              className={cn(
-                "relative w-full overflow-hidden rounded-2xl bg-[--brand-blue] py-7 text-base font-bold text-white transition-all duration-300",
-                "hover:scale-[1.02] active:scale-[0.98] bg-primary hover:bg-[#5d79ff]",
-                // Shimmer shine effect
-                "before:absolute before:inset-0 before:bg-linear-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-150%] hover:before:translate-x-[150%] before:transition-transform before:duration-1000"
-              )}
-            >
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                Get a Free Quote
-                <ArrowRight className="size-4" />
-              </span>
-            </Button>
-            <p className="mt-4 text-center text-[11px] font-medium tracking-wide text-slate-500">
-              Quick response • 7 Days a week
-            </p>
-          </div>
-        </div>
-      </aside>
+                  {/* Mobile CTA Section */}
+                  <div
+                    className={cn(
+                      "mt-auto pt-10 transition-all duration-700 delay-300",
+                      isOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                    )}
+                  >
+                    <Button
+                      type="button"
+                      size="lg"
+                      onClick={navigateToContact}
+                      className={cn(
+                        "relative w-full overflow-hidden rounded-2xl bg-[--brand-blue] py-7 text-base font-bold text-white transition-all duration-300",
+                        "hover:scale-[1.02] active:scale-[0.98] bg-primary hover:bg-[#5d79ff]",
+                        "before:absolute before:inset-0 before:bg-linear-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-150%] hover:before:translate-x-[150%] before:transition-transform before:duration-1000"
+                      )}
+                    >
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        Get a Free Quote
+                        <ArrowRight className="size-4" />
+                      </span>
+                    </Button>
+                    <p className="mt-4 text-center text-[11px] font-medium tracking-wide text-slate-500">
+                      Quick response • 7 Days a week
+                    </p>
+                  </div>
+                </div>
+              </aside>
+            </>,
+            document.body
+          )
+        : null}
     </header>
   )
 }

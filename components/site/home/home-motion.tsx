@@ -298,7 +298,13 @@ export function HomeMotion() {
           gsap.fromTo(
             header,
             { autoAlpha: 0, y: -24 },
-            { autoAlpha: 1, y: 0, duration: 0.85, ease: "power3.out" }
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.85,
+              ease: "power3.out",
+              clearProps: "transform",
+            }
           )
         }
 
