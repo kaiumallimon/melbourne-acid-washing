@@ -52,20 +52,20 @@ export function TestimonialsSection() {
         </h2>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_2fr_1fr]">
-          <div className="space-y-5">
+          <div className="grid gap-5 lg:grid-rows-2">
             <QuoteCard {...testimonials[0]} />
             <QuoteCard {...testimonials[1]} />
           </div>
 
-          <div className="space-y-5">
+          <div className="grid gap-5">
             <QuoteCard {...testimonials[2]} />
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid auto-rows-fr gap-5 md:grid-cols-2">
               <QuoteCard {...testimonials[3]} compact />
               <QuoteCard {...testimonials[4]} compact />
             </div>
           </div>
 
-          <div className="space-y-5 lg:block max-lg:hidden">
+          <div className="hidden gap-5 lg:grid lg:grid-rows-2">
             <QuoteCard
               quote="Excellent quality control. They tested and adjusted pressure around delicate edges before full cleaning."
               name="Cameron Williamson"
@@ -93,7 +93,7 @@ function QuoteCard({ quote, name, handle, featured, compact }: QuoteCardProps) {
   return (
     <article
       className={cn(
-        "rounded-2xl border border-white/10 bg-white/5 p-6 text-slate-100 backdrop-blur-sm",
+        "flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-6 text-slate-100 backdrop-blur-sm",
         featured ? "md:p-8" : "",
         compact ? "p-5" : ""
       )}
@@ -101,7 +101,7 @@ function QuoteCard({ quote, name, handle, featured, compact }: QuoteCardProps) {
       <p className={cn("leading-8 text-slate-100", featured ? "text-4xl font-bold leading-tight" : "text-3xl")}> 
         &quot;
       </p>
-      <p className={cn("mt-2 text-slate-200", featured ? "text-3xl leading-tight font-semibold" : "text-lg leading-8")}>
+      <p className={cn("mt-2 flex-1 text-slate-200", featured ? "text-3xl leading-tight font-semibold" : "text-lg leading-8")}>
         {quote}
       </p>
 
