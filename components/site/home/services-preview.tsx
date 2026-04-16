@@ -36,7 +36,7 @@ export function ServicesPreview() {
                   {pressureService.shortDescription}
                 </p>
               </div>
-              <div className="relative min-h-[360px] w-full grow max-lg:mx-auto max-lg:max-w-sm">
+              <div className="relative min-h-90 w-full grow max-lg:mx-auto max-lg:max-w-sm">
                 <div className="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[4.2rem] border-8 border-[#2a3753] bg-[#0a1328] outline outline-white/20">
                   <div className="grid h-full grid-cols-2">
                     <div className="flex flex-col justify-between bg-[linear-gradient(145deg,#26344f_0%,#182238_100%)] p-4 text-white">
@@ -121,18 +121,28 @@ export function ServicesPreview() {
                   {commercialService.shortDescription}
                 </p>
               </div>
-              <div className="relative min-h-[360px] w-full grow">
+              <div className="relative min-h-90 w-full grow">
                 <div className="absolute bottom-0 left-10 right-0 top-10 overflow-hidden rounded-tl-xl bg-[#0b152b] outline outline-white/10">
-                  <div className="flex border-b border-white/10 bg-[#0c1933] px-3 py-2 text-xs font-semibold text-slate-300">
-                    <span className="rounded-md bg-white/10 px-2 py-1 text-white">cleaningPlan.ts</span>
-                    <span className="px-2 py-1 text-slate-400">siteChecklist.ts</span>
+                  <div className="border-b border-white/10 bg-[#0c1933] px-4 py-3">
+                    <p className="text-xs font-semibold tracking-[0.14em] text-slate-300 uppercase">On-site workflow</p>
                   </div>
-                  <div className="space-y-2 px-4 py-4 font-mono text-xs text-slate-200">
-                    <p>const plan = inspectSurface(site)</p>
-                    <p>applyTreatment(plan)</p>
-                    <p>pressureClean(plan)</p>
-                    <p>verifyFinishConsistency()</p>
-                    <p>handoverReport()</p>
+                  <div className="space-y-3 px-4 py-4 text-sm text-slate-200">
+                    <p className="flex items-center justify-between border border-white/10 bg-white/5 px-3 py-2">
+                      <span>Surface inspection and risk check</span>
+                      <span className="text-xs text-cyan-200">01</span>
+                    </p>
+                    <p className="flex items-center justify-between border border-white/10 bg-white/5 px-3 py-2">
+                      <span>Targeted pre-treatment by contamination type</span>
+                      <span className="text-xs text-cyan-200">02</span>
+                    </p>
+                    <p className="flex items-center justify-between border border-white/10 bg-white/5 px-3 py-2">
+                      <span>Controlled pressure cleaning pass</span>
+                      <span className="text-xs text-cyan-200">03</span>
+                    </p>
+                    <p className="flex items-center justify-between border border-white/10 bg-white/5 px-3 py-2">
+                      <span>Final quality check and client handover</span>
+                      <span className="text-xs text-cyan-200">04</span>
+                    </p>
                   </div>
                 </div>
               </div>
