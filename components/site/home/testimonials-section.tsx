@@ -44,7 +44,7 @@ const testimonials: Testimonial[] = [
 
 export function TestimonialsSection() {
   return (
-    <section className="surface-grid-dark bg-[#06112a] py-24 sm:py-28">
+    <section className="bg-[#06112a] py-24 sm:py-28">
       <div className="mx-auto w-[min(1240px,calc(100%-1.5rem))]">
         <Eyebrow className="text-center text-[--brand-cyan]">Testimonials</Eyebrow>
         <h2 className="mx-auto mt-2 max-w-4xl text-center font-heading text-4xl leading-tight font-semibold text-white sm:text-6xl">

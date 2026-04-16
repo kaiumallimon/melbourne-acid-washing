@@ -13,7 +13,7 @@ export function ServicesPreview() {
   const commercialService = SERVICES[5]
 
   return (
-    <section id="services-preview" className="surface-grid-dark bg-[#040b1b] py-24 sm:py-28">
+    <section id="services-preview" className="bg-[#040b1b] py-24 sm:py-28">
       <div className="mx-auto w-[min(1240px,calc(100%-1.5rem))]">
         <Eyebrow className="text-center text-[--brand-cyan]">Core Capabilities</Eyebrow>
         <p className="mx-auto mt-2 max-w-3xl text-center font-heading text-4xl leading-tight font-semibold text-white sm:text-5xl">
