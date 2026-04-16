@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils"
 
 export function ContactDetails() {
   return (
-    <div className="relative h-full overflow-hidden border-r border-slate-200/80 bg-[linear-gradient(160deg,#f5f9ff_0%,#eff5fc_52%,#e8f0fa_100%)] p-6 md:p-8">
+    <div className="relative h-full overflow-hidden border-b border-slate-200/80 bg-[linear-gradient(160deg,#f5f9ff_0%,#eff5fc_52%,#e8f0fa_100%)] p-5 sm:p-6 md:p-8 lg:border-b-0 lg:border-r">
       <div className="absolute inset-0 bg-[radial-gradient(120%_80%_at_0%_0%,rgba(52,108,141,0.14),transparent_55%)]" />
 
       <div className="relative flex h-full flex-col">
@@ -88,9 +88,9 @@ function InfoRow({ icon, label, value }: InfoRowProps) {
       <span className="inline-flex size-9 shrink-0 items-center justify-center border border-primary/20 bg-primary/10 text-primary">
         {icon}
       </span>
-      <div>
+      <div className="min-w-0">
         <p className="text-xs font-semibold tracking-wide text-slate-500 uppercase">{label}</p>
-        <p className="mt-1 text-sm font-semibold text-[--brand-ink]">{value}</p>
+        <p className="mt-1 wrap-break-word text-sm font-semibold leading-6 text-[--brand-ink]">{value}</p>
       </div>
     </div>
   )
