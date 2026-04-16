@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 
 import { HomeCta } from "@/components/site/home/home-cta"
-import { PageHero } from "@/components/site/page-hero"
 import { PricingGuide } from "@/components/site/services/pricing-guide"
 import { ServiceCatalog } from "@/components/site/services/service-catalog"
+import { ServicesHero } from "@/components/site/services/services-hero"
 
 export const metadata: Metadata = {
   title: "Services | Melbourne Acid Washing",
@@ -14,12 +14,7 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Services"
-        title="Professional cleaning services for residential, commercial, and industrial surfaces"
-        description="From deep driveway restoration to large-site industrial cleaning, each service is delivered with controlled technique and practical communication."
-        badgeText="Free quotes across Melbourne"
-      />
+      <ServicesHero />
       <ServiceCatalog />
       <PricingGuide />
       <HomeCta />

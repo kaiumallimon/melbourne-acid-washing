@@ -39,9 +39,11 @@ export function ServiceCatalog() {
             const Icon = serviceIcons[index]
 
             return (
-              <article key={service.slug} className="border border-white/12 bg-white/5 p-5 backdrop-blur-sm">
-                <div className="space-y-3">
-                  <span className="inline-flex size-11 items-center justify-center border border-white/15 bg-white/8 text-[--brand-cyan]">
+              <article key={service.slug} className="group relative border border-white/12 bg-white/5 p-5 backdrop-blur-sm transition-all duration-300 hover:border-white/25 hover:bg-white/8">
+                <span className="absolute left-5 top-5 h-0.5 w-10 bg-[--brand-cyan]/80" />
+
+                <div className="space-y-3 pt-3">
+                  <span className="inline-flex size-11 items-center justify-center border border-white/15 bg-white/8 text-[--brand-cyan] transition-colors duration-300 group-hover:bg-white/12">
                     <Icon className="size-5" />
                   </span>
                   <h3 className="font-heading text-2xl font-semibold tracking-tight text-white">{service.title}</h3>
@@ -49,8 +51,8 @@ export function ServiceCatalog() {
                 </div>
 
                 <ul className="mt-5 grid gap-2 text-sm text-slate-200">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="inline-flex items-start gap-2 border border-white/10 bg-white/5 px-3 py-2">
+                  {service.features.slice(0, 4).map((feature) => (
+                    <li key={feature} className="inline-flex items-start gap-2 border border-white/10 bg-white/5 px-3 py-2 transition-colors duration-300 group-hover:bg-white/9">
                       <span className="mt-[0.45rem] inline-block size-1.5 shrink-0 bg-[--brand-cyan]" />
                       {feature}
                     </li>
