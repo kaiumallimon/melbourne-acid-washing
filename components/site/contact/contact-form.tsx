@@ -89,10 +89,10 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-[0_18px_36px_-30px_rgba(9,63,103,0.9)] md:p-6">
+    <form onSubmit={handleSubmit} className="h-full space-y-5 bg-white p-6 md:p-8">
       <div>
-        <p className="font-heading text-2xl font-bold text-[--brand-ink]">Request a Free Quote</p>
-        <p className="mt-1 text-sm text-slate-600">Fill in your details and our team will respond quickly.</p>
+        <p className="font-heading text-2xl font-bold text-[--brand-ink]">Request a free quote</p>
+        <p className="mt-1 text-sm text-slate-600">Fill in your details and we will reply quickly.</p>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2">
@@ -104,7 +104,7 @@ export function ContactForm() {
             onChange={(event) => setValues((current) => ({ ...current, firstName: event.target.value }))}
             placeholder="John"
             required
-            className="h-10"
+            className="h-11 border-slate-300/90 bg-white"
           />
         </Field>
         <Field>
@@ -115,23 +115,10 @@ export function ContactForm() {
             onChange={(event) => setValues((current) => ({ ...current, lastName: event.target.value }))}
             placeholder="Smith"
             required
-            className="h-10"
+            className="h-11 border-slate-300/90 bg-white"
           />
         </Field>
       </div>
-
-      <Field>
-        <Label htmlFor="phone">Phone Number</Label>
-        <Input
-          id="phone"
-          type="tel"
-          value={values.phone}
-          onChange={(event) => setValues((current) => ({ ...current, phone: event.target.value }))}
-          placeholder="+61 4XX XXX XXX"
-          required
-          className="h-10"
-        />
-      </Field>
 
       <Field>
         <Label htmlFor="email">Email Address</Label>
@@ -142,9 +129,36 @@ export function ContactForm() {
           onChange={(event) => setValues((current) => ({ ...current, email: event.target.value }))}
           placeholder="your@email.com"
           required
-          className="h-10"
+          className="h-11 border-slate-300/90 bg-white"
         />
       </Field>
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        <Field>
+          <Label htmlFor="phone">Phone Number</Label>
+          <Input
+            id="phone"
+            type="tel"
+            value={values.phone}
+            onChange={(event) => setValues((current) => ({ ...current, phone: event.target.value }))}
+            placeholder="+61 4XX XXX XXX"
+            required
+            className="h-11 border-slate-300/90 bg-white"
+          />
+        </Field>
+
+        <Field>
+          <Label htmlFor="suburb">Suburb</Label>
+          <Input
+            id="suburb"
+            value={values.suburb}
+            onChange={(event) => setValues((current) => ({ ...current, suburb: event.target.value }))}
+            placeholder="e.g. Toorak"
+            required
+            className="h-11 border-slate-300/90 bg-white"
+          />
+        </Field>
+      </div>
 
       <Field>
         <Label htmlFor="service">Service Required</Label>
@@ -154,7 +168,7 @@ export function ContactForm() {
             setValues((current) => ({ ...current, service: value ?? "" }))
           }
         >
-          <SelectTrigger id="service" className="h-10 w-full">
+          <SelectTrigger id="service" className="h-11 w-full border-slate-300/90 bg-white px-2.5 py-1">
             <SelectValue placeholder="Select a service..." />
           </SelectTrigger>
           <SelectContent>
@@ -168,18 +182,6 @@ export function ContactForm() {
       </Field>
 
       <Field>
-        <Label htmlFor="suburb">Suburb</Label>
-        <Input
-          id="suburb"
-          value={values.suburb}
-          onChange={(event) => setValues((current) => ({ ...current, suburb: event.target.value }))}
-          placeholder="e.g. Toorak, Hawthorn"
-          required
-          className="h-10"
-        />
-      </Field>
-
-      <Field>
         <Label htmlFor="message">Message / Details</Label>
         <Textarea
           id="message"
@@ -187,7 +189,7 @@ export function ContactForm() {
           onChange={(event) => setValues((current) => ({ ...current, message: event.target.value }))}
           placeholder="Describe your job, approximate size, and any specific concerns."
           required
-          className="min-h-28"
+          className="min-h-28 border-slate-300/90 bg-white"
         />
       </Field>
 
@@ -195,7 +197,7 @@ export function ContactForm() {
         type="submit"
         size="lg"
         disabled={!canSubmit || isSubmitting}
-        className="w-full rounded-xl border-0 bg-[--brand-navy] text-white hover:bg-[--brand-blue]"
+        className="w-full rounded-full border border-transparent bg-primary text-white hover:border-primary hover:bg-transparent hover:text-primary"
       >
         {isSubmitting ? "Sending Quote Request..." : "Send My Quote Request"}
       </Button>
@@ -219,7 +221,7 @@ function Field({ children }: { children: ReactNode }) {
 
 function Label({ children, htmlFor }: { children: string; htmlFor: string }) {
   return (
-    <label htmlFor={htmlFor} className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
+    <label htmlFor={htmlFor} className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
       {children}
     </label>
   )

@@ -31,7 +31,7 @@ export function SiteFooter() {
 
       <div className="mx-auto w-[min(1240px,calc(100%-1.5rem))] pt-20 pb-10">
         <div className="grid gap-x-12 gap-y-16 lg:grid-cols-12">
-          
+
           {/* Brand Section */}
           <div className="lg:col-span-4 space-y-8">
             <Link href="/" className="flex min-w-0 items-center gap-3">
@@ -59,7 +59,7 @@ export function SiteFooter() {
             </BodyText>
 
             <div className="flex items-center gap-4">
-               {/* Socials / Secondary CTAs */}
+              {/* Socials / Secondary CTAs */}
               <Link href="#" className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-blue-600/20 hover:text-blue-400">
                 <FiInstagram className="size-5" />
               </Link>
@@ -133,34 +133,36 @@ export function SiteFooter() {
         {/* Bottom Bar */}
         <div className="mt-20 border-t border-white/5 pt-10">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <p className="text-[13px]">
-            © {new Date().getFullYear()} {BUSINESS_NAME}. All rights reserved.
-          </p>
-          
-          <nav className="flex items-center gap-8">
-            {legalLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[13px] transition hover:text-white"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+            <p className="text-[13px]">
+              © {new Date().getFullYear()} {BUSINESS_NAME}. All rights reserved.
+            </p>
+
+            <nav className="flex items-center gap-8">
+              {legalLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-[13px] transition hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
           </div>
 
-          <p className="mt-5 text-center text-sm text-slate-500 font-semibold">
-            Designed and developed by{" "}
-            <a
-              href="https://www.neuroweb.com.au/"
-              target="_blank"
-              rel="noreferrer"
-              className="font-bold text-primary underline-offset-4 hover:underline"
-            >
-              NEUROWEB
-            </a>
-          </p>
+          <div className="mt-5 mx-auto max-w-2xl text-center">
+            <p className="border border-muted-foreground px-3 py-2 inline-flex gap-1 mx-auto justify-center text-center text-sm text-slate-500 font-semibold">
+              Designed and developed by{" "}
+              <a
+                href="https://www.neuroweb.com.au/"
+                target="_blank"
+                rel="noreferrer"
+                className="font-bold text-primary underline-offset-4 hover:underline"
+              >
+                NEUROWEB
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
