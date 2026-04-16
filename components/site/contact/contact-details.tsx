@@ -37,12 +37,12 @@ export function ContactDetails() {
           <InfoRow icon={<Clock3 className="size-4" />} label="Hours" value="Mon-Sat: 7:00 AM - 6:00 PM | Sun: By appointment" />
         </div>
 
-        <div className="mt-auto flex flex-wrap gap-2.5 border-t border-slate-200/70 pt-7">
+        <div className="mt-auto flex w-full flex-col gap-3 border-t border-slate-200/70 pt-7">
           <a
             href={WHATSAPP_URL}
             className={cn(
               buttonVariants({ size: "sm" }),
-              "rounded-full border border-transparent bg-primary px-4 text-white hover:bg-primary/85"
+              "h-11 w-full rounded-full border border-transparent bg-primary px-4 text-white hover:bg-primary/85"
             )}
           >
             <FaWhatsapp className="size-4" />
@@ -52,7 +52,7 @@ export function ContactDetails() {
             href={PHONE_NUMBER_LINK}
             className={cn(
               buttonVariants({ variant: "outline", size: "sm" }),
-              "rounded-full border-slate-300 bg-white px-4 text-slate-700 hover:border-primary/30 hover:bg-[--brand-ice]"
+              "h-11 w-full rounded-full border-slate-300 bg-white px-4 text-slate-700 hover:border-primary/30 hover:bg-[--brand-ice]"
             )}
           >
             <FiPhoneCall className="size-4" />
@@ -64,7 +64,7 @@ export function ContactDetails() {
             rel="noreferrer"
             className={cn(
               buttonVariants({ variant: "outline", size: "sm" }),
-              "rounded-full border-slate-300 bg-white px-4 text-slate-700 hover:border-primary/30 hover:bg-[--brand-ice]"
+              "h-11 w-full rounded-full border-slate-300 bg-white px-4 text-slate-700 hover:border-primary/30 hover:bg-[--brand-ice]"
             )}
           >
             <FaFacebookF className="size-4" />
