@@ -34,22 +34,23 @@ export function SiteFooter() {
           
           {/* Brand Section */}
           <div className="lg:col-span-4 space-y-8">
-            <Link href="/" className="flex items-center gap-3.5 group">
-              <div className="relative">
+            <Link href="/" className="flex min-w-0 items-center gap-3">
+              <span className="inline-flex items-center justify-center transition-all duration-300">
                 <Image
                   src="/logo.png"
                   alt={BUSINESS_NAME}
-                  width={60}
-                  height={60}
-                  className="size-14 rounded-2xl border border-white/10 object-cover grayscale transition duration-500 group-hover:grayscale-0"
+                  width={100}
+                  height={100}
+                  className="allow-rounded border border-primary/20 size-15 object-cover md:size-20"
                 />
-                <div className="absolute -inset-1 rounded-2xl bg-linear-to-tr from-blue-500 to-cyan-500 opacity-0 blur transition duration-500 group-hover:opacity-20" />
-              </div>
-              <div>
-                <p className="font-heading text-xl font-bold tracking-tight text-white">
+              </span>
+              <div className="min-w-0">
+                <p className="truncate font-heading text-base leading-none font-bold text-white md:text-lg">
                   {BUSINESS_NAME}
                 </p>
-                <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-500">Professional Exterior Cleaning</p>
+                <p className="mt-1 truncate text-[10px] tracking-[0.15em] text-slate-500 uppercase md:text-[11px]">
+                  Professional Exterior Cleaning
+                </p>
               </div>
             </Link>
 
@@ -130,7 +131,8 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-20 flex flex-col items-center justify-between gap-6 border-t border-white/5 pt-10 md:flex-row">
+        <div className="mt-20 border-t border-white/5 pt-10">
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <p className="text-[13px]">
             © {new Date().getFullYear()} {BUSINESS_NAME}. All rights reserved.
           </p>
@@ -145,8 +147,20 @@ export function SiteFooter() {
                 {link.label}
               </Link>
             ))}
-            <p className="text-[13px] text-slate-600 hidden sm:block">Built by Melbourne Creative</p>
           </nav>
+          </div>
+
+          <p className="mt-5 text-center text-sm text-slate-500 font-semibold">
+            Designed and developed by{" "}
+            <a
+              href="https://www.neuroweb.com.au/"
+              target="_blank"
+              rel="noreferrer"
+              className="font-bold text-primary underline-offset-4 hover:underline"
+            >
+              NEUROWEB
+            </a>
+          </p>
         </div>
       </div>
     </footer>
