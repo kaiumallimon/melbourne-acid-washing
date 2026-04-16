@@ -15,7 +15,7 @@ export function ServicesPreview() {
   return (
     <section id="services-preview" className="bg-[#040b1b] py-24 sm:py-28">
       <div className="mx-auto w-[min(1240px,calc(100%-1.5rem))]">
-        <Eyebrow className="">Core Capabilities</Eyebrow>
+        <Eyebrow className="mb-10">Core Capabilities</Eyebrow>
         <p className="mx-auto mt-2 max-w-3xl text-center font-heading text-4xl leading-tight font-semibold text-white sm:text-5xl">
           A modern workflow for deep exterior surface restoration
         </p>
@@ -68,15 +68,13 @@ export function ServicesPreview() {
               </div>
               <div className="flex flex-1 items-center justify-center px-8 pb-8 pt-10 sm:px-10 lg:pb-2">
                 <div className="w-full max-w-xs space-y-2">
-                  <div className="h-2 rounded-full bg-white/10">
-                    <div className="h-2 w-[88%] rounded-full bg-[--brand-cyan]" />
+                  <p className="text-xs font-semibold tracking-[0.16em] text-slate-300 uppercase">Treatment focus</p>
+                  <div className="flex flex-wrap gap-1.5 text-[11px] text-slate-200">
+                    <span className="border border-white/10 bg-white/5 px-2 py-1">Oil marks</span>
+                    <span className="border border-white/10 bg-white/5 px-2 py-1">Mineral stains</span>
+                    <span className="border border-white/10 bg-white/5 px-2 py-1">Weathering</span>
                   </div>
-                  <div className="h-2 rounded-full bg-white/10">
-                    <div className="h-2 w-[74%] rounded-full bg-[#6885ff]" />
-                  </div>
-                  <div className="h-2 rounded-full bg-white/10">
-                    <div className="h-2 w-[93%] rounded-full bg-[#87d7ff]" />
-                  </div>
+                  
                 </div>
               </div>
             </div>

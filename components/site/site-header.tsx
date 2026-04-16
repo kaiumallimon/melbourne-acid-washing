@@ -149,7 +149,7 @@ export function SiteHeader() {
           <Link
             href="/contact"
             className={cn(
-              " ml-auto flex items-center justify-center gap-2 py-2 font-semibold border border-transparent bg-primary px-6 text-white hover:bg-[#4b50d7]"
+              "hidden ml-auto lg:flex items-center justify-center gap-2 py-2 font-semibold border border-transparent bg-primary px-6 text-white hover:bg-[#4b50d7]"
             )}
           >
             Get Free Quote

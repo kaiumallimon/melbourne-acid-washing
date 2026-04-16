@@ -153,6 +153,13 @@
     min-height: 100%;
     overflow-x: hidden;
   }
+
+  @media (max-width: 767px) {
+    .mobile-section-x section {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
 }
 
 @layer utilities {

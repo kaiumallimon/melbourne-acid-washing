@@ -18,7 +18,7 @@ export function Eyebrow({ children, className, showDash = true }: EyebrowProps) 
   return (
     <div className={cn("mb-3 flex w-full items-center justify-center gap-3", className)}>
       {showDash && (
-        <span className="h-px w-8 bg-primary/60 shrink-0" aria-hidden="true" />
+        <span className="h-px w-8 bg-primary shrink-0" aria-hidden="true" />
       )}
       
       <p

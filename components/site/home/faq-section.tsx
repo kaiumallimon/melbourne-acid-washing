@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 
+import { Eyebrow } from "@/components/typography"
+
 const faqItems = [
   {
     question: "Do you use acid washing on every job?",
@@ -39,14 +41,14 @@ export function FaqSection() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
-    <section className="bg-[#e9edf4] py-24 sm:py-28">
-      <div className="mx-auto w-[min(1120px,calc(100%-1.5rem))]">
-        <p className="text-xs font-semibold tracking-[0.16em] text-[#346c8d] uppercase">FAQ</p>
-        <h2 className="mt-3 max-w-4xl font-heading text-5xl leading-tight font-semibold text-[#0f2038] sm:text-6xl">
+    <section className="bg-white py-24 sm:py-28">
+      <div className="mx-auto w-[min(1240px,calc(100%-1.5rem))]">
+        <Eyebrow className="mb-10">FAQ</Eyebrow>
+        <h2 className="mx-auto mt-3 max-w-4xl text-center font-heading text-5xl leading-tight font-semibold text-[#0f2038] sm:text-6xl">
           Frequently asked questions
         </h2>
 
-        <div className="mt-10 border-y border-slate-300/70">
+        <div className="mx-auto mt-10 max-w-5xl border-y border-slate-300/70">
           {faqItems.map((item, index) => {
             const isActive = index === activeIndex
 
@@ -58,7 +60,7 @@ export function FaqSection() {
                   className="flex w-full items-start justify-between gap-5 py-6 text-left md:py-7"
                   aria-expanded={isActive}
                 >
-                  <h3 className="text-2xl leading-tight font-semibold text-[#0f2038] md:text-3xl">{item.question}</h3>
+                  <h3 className="text-lg leading-tight font-bold text-[#0f2038] md:text-xl">{item.question}</h3>
                   <span className="mt-1 text-xl font-semibold text-slate-500">{isActive ? "-" : "+"}</span>
                 </button>
 
