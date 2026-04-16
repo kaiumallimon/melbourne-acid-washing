@@ -44,7 +44,7 @@ export function SiteHeader() {
               <p className="truncate font-heading text-base leading-none font-bold text-[--brand-ink] md:text-lg">
                 {BUSINESS_NAME}
               </p>
-              <p className="truncate text-[11px] tracking-[0.1em] text-[--brand-blue] uppercase md:text-xs">
+              <p className="truncate text-[11px] tracking-widest text-[--brand-blue] uppercase md:text-xs">
                 Professional Exterior Cleaning
               </p>
             </div>

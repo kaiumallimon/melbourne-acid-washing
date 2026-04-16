@@ -81,7 +81,7 @@ export function GalleryBento() {
               </div>
             </div>
 
-            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/55 to-transparent p-3 text-white">
+            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-linear-to-t from-black/55 to-transparent p-3 text-white">
               <div>
                 <p className="font-heading text-sm leading-none font-semibold">{item.title}</p>
                 <p className="mt-1 text-xs text-white/85">{item.suburb}</p>
