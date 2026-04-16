@@ -72,7 +72,7 @@
   --chart-3: #1f3f94;
   --chart-4: #112857;
   --chart-5: #0a1733;
-  --radius: 0.9rem;
+  --radius: 0;
   --sidebar: #f7f9ff;
   --sidebar-foreground: #111827;
   --sidebar-primary: #346c8d;
@@ -127,6 +127,10 @@
 @layer base {
   * {
     @apply border-border outline-ring/40;
+  }
+
+  [class*="rounded"] {
+    border-radius: 0 !important;
   }
 
   html {
