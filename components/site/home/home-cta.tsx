@@ -23,11 +23,11 @@ export function HomeCta() {
               </a>
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
               <Link
                 href="/contact"
                 className={cn(
-                  "flex items-center justify-center gap-2 py-2 font-semibold rounded-full border border-transparent bg-primary px-6 text-white hover:bg-transparent hover:border hover:border-primary hover:text-primary transition-all duration-300"
+                  "flex w-full items-center justify-center gap-2 rounded-full border border-transparent bg-primary px-6 py-2 font-semibold text-white transition-all duration-300 hover:border hover:border-primary hover:bg-transparent hover:text-primary sm:w-auto"
                 )}
               >
                 Request Free Quote
@@ -35,7 +35,7 @@ export function HomeCta() {
               <a
                 href={WHATSAPP_URL}
                 className={cn(
-                  "flex items-center justify-center gap-2 py-2 font-semibold rounded-full border border-slate-300/85 bg-white/80 px-6 text-slate-700 hover:bg-secondary transition-all duration-300"
+                  "flex w-full items-center justify-center gap-2 rounded-full border border-slate-300/85 bg-white/80 px-6 py-2 font-semibold text-slate-700 transition-all duration-300 hover:bg-secondary sm:w-auto"
                 )}
               >
                 WhatsApp Us

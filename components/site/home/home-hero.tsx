@@ -2,7 +2,6 @@ import Link from "next/link"
 import { ArrowRight, CircleCheckBig } from "lucide-react"
 
 import { DisplayTitle, Eyebrow, SectionLead } from "@/components/typography"
-import { buttonVariants } from "@/components/ui/button"
 import { PHONE_NUMBER_DISPLAY, PHONE_NUMBER_LINK } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
@@ -22,11 +21,11 @@ export function HomeHero() {
                     concrete, brick, render, and stain-heavy problem areas.
                 </SectionLead>
 
-                <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
                     <Link
                         href="/contact"
                         className={cn(
-                            "flex items-center justify-center gap-2 py-2 font-semibold rounded-full border border-transparent bg-primary px-6 text-white hover:bg-transparent hover:border hover:border-primary hover:text-primary transition-all duration-300",
+                            "flex w-full items-center justify-center gap-2 rounded-full border border-transparent bg-primary px-6 py-2 font-semibold text-white transition-all duration-300 hover:border hover:border-primary hover:bg-transparent hover:text-primary sm:w-auto",
                         )}
                     >
                         Get Free Quote
@@ -35,7 +34,7 @@ export function HomeHero() {
                     <a
                         href={PHONE_NUMBER_LINK}
                         className={cn(
-                            "flex items-center justify-center gap-2 py-2 font-semibold rounded-full border border-slate-300/85 bg-white/80 px-6 text-slate-700 hover:bg-secondary transition-all duration-300",  
+                            "flex w-full items-center justify-center gap-2 rounded-full border border-slate-300/85 bg-white/80 px-6 py-2 font-semibold text-slate-700 transition-all duration-300 hover:bg-secondary sm:w-auto",
                         )}
                     >
                         Call {PHONE_NUMBER_DISPLAY}
