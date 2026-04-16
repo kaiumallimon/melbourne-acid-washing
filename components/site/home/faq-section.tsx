@@ -39,29 +39,48 @@ export function FaqSection() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
-    <section className="bg-[#eceff4] py-24 sm:py-28">
+    <section className="bg-[#e9edf4] py-24 sm:py-28">
       <div className="mx-auto w-[min(1120px,calc(100%-1.5rem))]">
-        <h2 className="font-heading text-5xl leading-tight font-semibold text-[#0f2038] sm:text-6xl">
+        <p className="text-xs font-semibold tracking-[0.16em] text-[#346c8d] uppercase">FAQ</p>
+        <h2 className="mt-3 max-w-4xl font-heading text-5xl leading-tight font-semibold text-[#0f2038] sm:text-6xl">
           Frequently asked questions
         </h2>
 
-        <div className="mt-8 divide-y divide-slate-300/70 rounded-2xl border border-slate-300/70 bg-white px-5 md:px-8">
+        <div className="mt-10 border-y border-slate-300/70">
           {faqItems.map((item, index) => {
             const isActive = index === activeIndex
 
             return (
-              <article key={item.question} className="py-5">
+              <article key={item.question} className="border-b border-slate-300/70 last:border-b-0">
                 <button
                   type="button"
                   onClick={() => setActiveIndex(isActive ? -1 : index)}
-                  className="flex w-full items-center justify-between gap-4 text-left"
+                  className="flex w-full items-start justify-between gap-5 py-6 text-left md:py-7"
+                  aria-expanded={isActive}
                 >
-                  <h3 className="text-2xl font-semibold text-[#0f2038]">{item.question}</h3>
-                  <span className="text-3xl font-light text-slate-600">{isActive ? "-" : "+"}</span>
+                  <h3 className="text-2xl leading-tight font-semibold text-[#0f2038] md:text-3xl">{item.question}</h3>
+                  <span className="mt-1 text-xl font-semibold text-slate-500">{isActive ? "-" : "+"}</span>
                 </button>
-                {isActive ? (
-                  <p className="mt-3 max-w-4xl text-lg leading-8 text-slate-600">{item.answer}</p>
-                ) : null}
+
+                <div
+                  className={
+                    isActive
+                      ? "grid grid-rows-[1fr] transition-all duration-400 ease-out"
+                      : "grid grid-rows-[0fr] transition-all duration-300 ease-in"
+                  }
+                >
+                  <div className="overflow-hidden">
+                    <p
+                      className={
+                        isActive
+                          ? "max-w-4xl pb-6 text-lg leading-8 text-slate-600 opacity-100 transition-opacity duration-300 md:pb-7"
+                          : "max-w-4xl pb-6 text-lg leading-8 text-slate-600 opacity-0 transition-opacity duration-200 md:pb-7"
+                      }
+                    >
+                      {item.answer}
+                    </p>
+                  </div>
+                </div>
               </article>
             )
           })}

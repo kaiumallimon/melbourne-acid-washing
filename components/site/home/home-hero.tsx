@@ -11,7 +11,9 @@ export function HomeHero() {
         <section className="relative isolate overflow-hidden pb-28 pt-35 md:pb-35 md:pt-50">
             <div className="absolute inset-x-0 top-[-12%] -z-20 h-[66%] bg-[radial-gradient(58%_58%_at_50%_55%,rgba(99,102,241,0.2),transparent_72%)]" />
             <div className="mx-auto flex w-[min(1120px,calc(100%-1.5rem))] flex-col items-center text-center">
-                <Eyebrow className="text-primary">Melbourne Surface Cleaning Specialists</Eyebrow>
+                <Eyebrow className="text-primary" showDash={false}>
+                    Melbourne Surface Cleaning Specialists
+                </Eyebrow>
                 <DisplayTitle className="mt-4 max-w-4xl text-balance text-[#0f172f] md:text-6xl lg:text-7xl">
                     Acid washing and pressure cleaning that restores serious curb appeal.
                 </DisplayTitle>

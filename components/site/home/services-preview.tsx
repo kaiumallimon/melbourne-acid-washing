@@ -15,7 +15,7 @@ export function ServicesPreview() {
   return (
     <section id="services-preview" className="bg-[#040b1b] py-24 sm:py-28">
       <div className="mx-auto w-[min(1240px,calc(100%-1.5rem))]">
-        <Eyebrow className="text-center text-[--brand-cyan]">Core Capabilities</Eyebrow>
+        <Eyebrow className="">Core Capabilities</Eyebrow>
         <p className="mx-auto mt-2 max-w-3xl text-center font-heading text-4xl leading-tight font-semibold text-white sm:text-5xl">
           A modern workflow for deep exterior surface restoration
         </p>

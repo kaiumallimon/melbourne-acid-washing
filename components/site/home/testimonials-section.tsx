@@ -46,7 +46,7 @@ export function TestimonialsSection() {
   return (
     <section className="bg-[#06112a] py-24 sm:py-28">
       <div className="mx-auto w-[min(1240px,calc(100%-1.5rem))]">
-        <Eyebrow className="text-center text-[--brand-cyan]">Testimonials</Eyebrow>
+        <Eyebrow className="text-center text-primary">Testimonials</Eyebrow>
         <h2 className="mx-auto mt-2 max-w-4xl text-center font-heading text-4xl leading-tight font-semibold text-white sm:text-6xl">
           We have worked with thousands of amazing people
         </h2>
@@ -107,7 +107,7 @@ function QuoteCard({ quote, name, handle, featured, compact, className }: QuoteC
       </p>
 
       <div className="mt-5 flex items-center gap-3 border-t border-white/10 pt-4">
-        <span className="inline-flex size-10 items-center justify-center rounded-full bg-[--brand-blue] text-xs font-bold text-white">
+        <span className="inline-flex size-10 items-center justify-center rounded-full bg-primary allow-rounded text-xs font-bold text-white">
           {initials}
         </span>
         <div>
