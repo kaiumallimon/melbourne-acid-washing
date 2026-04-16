@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, PhoneCall, X } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import { buttonVariants } from "@/components/ui/button"
 import {
@@ -27,15 +27,11 @@ export function SiteHeader() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
 
-  useEffect(() => {
-    setIsOpen(false)
-  }, [pathname])
-
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto mt-3 w-[min(1120px,calc(100%-1.25rem))] rounded-2xl border border-white/70 bg-white/72 shadow-[0_18px_40px_-28px_rgba(16,47,74,0.8)] backdrop-blur-xl">
         <div className="flex items-center gap-3 p-3 md:px-4 md:py-3.5">
-          <Link href="/" className="flex min-w-0 items-center gap-2.5">
+          <Link href="/" onClick={() => setIsOpen(false)} className="flex min-w-0 items-center gap-2.5">
             <Image
               src="/logo.png"
               alt="Melbourne Acid Washing logo"
@@ -106,6 +102,7 @@ export function SiteHeader() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    onClick={() => setIsOpen(false)}
                     className={cn(
                       "rounded-xl px-3 py-2 text-sm font-semibold",
                       active
@@ -119,6 +116,7 @@ export function SiteHeader() {
               })}
               <a
                 href={PHONE_NUMBER_LINK}
+                onClick={() => setIsOpen(false)}
                 className={cn(
                   buttonVariants({ size: "sm" }),
                   "mt-2 rounded-xl border-0 bg-[--brand-navy] text-white hover:bg-[--brand-blue]"

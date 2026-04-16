@@ -51,8 +51,8 @@ export function WhyChooseUs() {
             Client feedback
           </p>
           <blockquote className="mt-4 font-heading text-2xl leading-tight font-semibold text-[--brand-ink]">
-            "Our driveway and frontage looked years newer in one visit. The team was quick, careful, and honest about
-            every step."
+            Our driveway and frontage looked years newer in one visit. The team was quick, careful, and honest about
+            every step.
           </blockquote>
           <p className="mt-3 text-sm font-semibold text-slate-600">- Residential client, South Yarra</p>
         </aside>

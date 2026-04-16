@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Facebook, Mail, MapPin, PhoneCall } from "lucide-react"
+import { Mail, MapPin, PhoneCall, ThumbsUp } from "lucide-react"
 
 import { BodyText } from "@/components/typography"
 import { Separator } from "@/components/ui/separator"
@@ -39,7 +39,7 @@ export function SiteFooter() {
                 <p className="font-heading text-2xl leading-none font-bold text-[--brand-ink]">
                   {BUSINESS_NAME}
                 </p>
-                <p className="text-xs tracking-[0.1em] text-[--brand-blue] uppercase">Melbourne Wide Service</p>
+                <p className="text-xs tracking-widest text-[--brand-blue] uppercase">Melbourne Wide Service</p>
               </div>
             </div>
             <BodyText className="max-w-md">
@@ -66,7 +66,7 @@ export function SiteFooter() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:border-sky-200 hover:bg-sky-50"
               >
-                <Facebook className="size-4 text-[--brand-blue]" />
+                <ThumbsUp className="size-4 text-[--brand-blue]" />
                 Facebook
               </a>
             </div>

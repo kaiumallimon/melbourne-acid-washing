@@ -1,6 +1,7 @@
 "use client"
 
 import { FormEvent, useMemo, useState } from "react"
+import type { ReactNode } from "react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -149,7 +150,9 @@ export function ContactForm() {
         <Label htmlFor="service">Service Required</Label>
         <Select
           value={values.service}
-          onValueChange={(value) => setValues((current) => ({ ...current, service: value }))}
+          onValueChange={(value) =>
+            setValues((current) => ({ ...current, service: value ?? "" }))
+          }
         >
           <SelectTrigger id="service" className="h-10 w-full">
             <SelectValue placeholder="Select a service..." />
@@ -210,7 +213,7 @@ export function ContactForm() {
   )
 }
 
-function Field({ children }: { children: React.ReactNode }) {
+function Field({ children }: { children: ReactNode }) {
   return <div className="space-y-1.5">{children}</div>
 }
 

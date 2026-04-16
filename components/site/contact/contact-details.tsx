@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Clock3, Mail, MapPin, PhoneCall } from "lucide-react"
+import type { ReactNode } from "react"
 
 import { BodyText, SectionTitle } from "@/components/typography"
 import { buttonVariants } from "@/components/ui/button"
@@ -65,7 +66,7 @@ export function ContactDetails() {
 }
 
 type InfoRowProps = {
-  icon: React.ReactNode
+  icon: ReactNode
   label: string
   value: string
 }
