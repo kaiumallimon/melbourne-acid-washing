@@ -7,7 +7,10 @@ export function TrustStrip() {
 
   return (
     <section className="overflow-hidden border-y border-white/10 bg-[#07132b]">
-      <div className="flex w-max items-center gap-8 py-5 pr-8 animate-[marquee_20s_linear_infinite] will-change-transform">
+      <div
+        className="flex w-max items-center gap-8 py-5 pr-8 will-change-transform"
+        style={{ animation: "marquee 20s linear infinite" }}
+      >
         {marqueePoints.map((point, index) => (
           <p key={`${point}-${index}`} className="inline-flex shrink-0 items-center gap-2 text-xs font-semibold tracking-wide text-slate-100">
             <span className="inline-flex size-5 items-center justify-center rounded-full bg-cyan-100/14">

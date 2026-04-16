@@ -24,8 +24,7 @@ export function HomeHero() {
                     <Link
                         href="/contact"
                         className={cn(
-                            buttonVariants({ size: "lg" }),
-                            "rounded-full border border-transparent bg-[#5459e8] px-6 text-white hover:bg-[#4b50d7]"
+                            "flex items-center justify-center gap-2 py-2 font-semibold rounded-full border border-transparent bg-[#5459e8] px-6 text-white hover:bg-[#4b50d7]"
                         )}
                     >
                         Get Free Quote
@@ -34,24 +33,18 @@ export function HomeHero() {
                     <a
                         href={PHONE_NUMBER_LINK}
                         className={cn(
-                            buttonVariants({ variant: "outline", size: "lg" }),
-                            "rounded-full border-slate-300/85 bg-white/80 px-6 text-slate-700 hover:bg-white"
+                            "flex items-center justify-center gap-2 py-2 font-semibold rounded-full border border-slate-300/85 bg-white/80 px-6 text-slate-700 hover:bg-white"
                         )}
                     >
                         Call {PHONE_NUMBER_DISPLAY}
                     </a>
                 </div>
 
-                <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">
+                <p className="mt-5 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-indigo-700">
                     <CircleCheckBig className="size-3.5 text-[#5459e8]" />
                     20% intro offer for first-time bookings this month
                 </p>
 
-                <div className="mt-7 flex flex-wrap justify-center gap-2 text-xs font-medium text-slate-600">
-                    <span className="rounded-full border border-slate-300/80 bg-white/70 px-3 py-1">Licensed and insured</span>
-                    <span className="rounded-full border border-slate-300/80 bg-white/70 px-3 py-1">Melbourne-wide service</span>
-                    <span className="rounded-full border border-slate-300/80 bg-white/70 px-3 py-1">Fast quote response</span>
-                </div>
             </div>
 
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-44 overflow-hidden">
