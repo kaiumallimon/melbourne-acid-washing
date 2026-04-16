@@ -80,7 +80,7 @@ export function SiteHeader() {
       <div className="relative mx-auto w-[min(1240px,calc(100%-1.5rem))]">
         <div className="flex h-25 items-center gap-3">
           {/* Logo Section */}
-          <Link href="/" onClick={() => setIsOpen(false)} className="flex min-w-0 items-center gap-3 group">
+          <Link href="/" onClick={() => setIsOpen(false)} className="cursor-target flex min-w-0 items-center gap-3 group">
             <span
               className={cn(
                 "inline-flex items-center justify-center transition-all duration-300",
@@ -125,7 +125,7 @@ export function SiteHeader() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "relative rounded-full px-4 py-2 text-sm font-semibold transition-colors",
+                    "cursor-target relative rounded-full px-4 py-2 text-sm font-semibold transition-colors",
                     active
                       ? hasSurface ? "text-white" : "text-slate-900"
                       : hasSurface ? "text-slate-400 hover:text-white" : "text-slate-600 hover:text-slate-900"
@@ -149,7 +149,7 @@ export function SiteHeader() {
           <Link
             href="/contact"
             className={cn(
-              "hidden ml-auto lg:flex items-center justify-center gap-2 py-2 font-semibold border border-transparent bg-primary px-6 text-white hover:bg-[#4b50d7]"
+              "cursor-target hidden ml-auto lg:flex items-center justify-center gap-2 py-2 font-semibold border border-transparent bg-primary px-6 text-white hover:bg-[#4b50d7]"
             )}
           >
             Get Free Quote
@@ -220,7 +220,7 @@ export function SiteHeader() {
                   onClick={() => setIsOpen(false)}
                   style={{ transitionDelay: isOpen ? `${i * 60}ms` : "0ms" }}
                   className={cn(
-                    "group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-medium transition-all duration-500",
+                    "cursor-target group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-medium transition-all duration-500",
                     isOpen ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0",
                     active
                       ? "bg-white/10 text-white"
