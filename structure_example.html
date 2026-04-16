@@ -1,0 +1,537 @@
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--brand-blue:#1a5fa8;--brand-green:#2e9e6e;--brand-dark:#0d3d6e;--brand-light:#e8f4fd;--brand-accent:#20b07a;--white:#fff;--gray:#f5f7fa;--text-dark:#1a1a2e;--text-mid:#4a5568;--text-light:#718096}
+  body{font-family:'Segoe UI',sans-serif;color:var(--text-dark);background:var(--white)}
+  nav{background:var(--brand-dark);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+  .logo-area{display:flex;align-items:center;gap:10px;padding:10px 0}
+  .logo-circle{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--brand-blue),var(--brand-green));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:13px;letter-spacing:-.5px;text-align:center;line-height:1.2;border:2px solid rgba(255,255,255,.3)}
+  .logo-text{color:#fff;font-size:15px;font-weight:600;line-height:1.3}
+  .logo-text span{color:#4dd9a2;font-size:11px;font-weight:400;display:block}
+  nav ul{list-style:none;display:flex;gap:4px}
+  nav ul li a{color:rgba(255,255,255,.85);text-decoration:none;padding:8px 14px;border-radius:6px;font-size:13px;transition:.2s;cursor:pointer;display:block}
+  nav ul li a:hover,nav ul li a.active{background:rgba(255,255,255,.15);color:#fff}
+  .badge-20{background:var(--brand-green);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px}
+  .page{display:none}
+  .page.active{display:block}
+
+  /* HOME */
+  .hero{background:linear-gradient(135deg,var(--brand-dark) 0%,var(--brand-blue) 60%,var(--brand-green) 100%);padding:80px 32px 60px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-40px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05)}
+  .hero::after{content:'';position:absolute;bottom:-60px;left:-40px;width:250px;height:250px;border-radius:50%;background:rgba(46,158,110,.15)}
+  .hero h1{font-size:38px;font-weight:800;color:#fff;margin-bottom:12px;position:relative}
+  .hero h1 span{color:#4dd9a2}
+  .hero p{color:rgba(255,255,255,.8);font-size:16px;max-width:560px;margin:0 auto 28px;position:relative;line-height:1.7}
+  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+  .btn-primary{background:var(--brand-green);color:#fff;border:none;padding:13px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:.2s}
+  .btn-primary:hover{background:var(--brand-accent);transform:translateY(-1px)}
+  .btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);padding:11px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:.2s}
+  .btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+  .trust-bar{background:var(--brand-blue);display:flex;justify-content:center;gap:40px;padding:16px 32px;flex-wrap:wrap}
+  .trust-item{color:#fff;font-size:13px;display:flex;align-items:center;gap:6px;opacity:.9}
+  .trust-item .icon{width:20px;height:20px;background:var(--brand-green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+  .services-preview{padding:60px 32px;background:var(--gray);text-align:center}
+  .section-title{font-size:28px;font-weight:700;color:var(--brand-dark);margin-bottom:8px}
+  .section-sub{color:var(--text-mid);font-size:15px;margin-bottom:40px}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:960px;margin:0 auto 36px}
+  .svc-card{background:#fff;border-radius:12px;padding:28px 20px;border:1px solid #e2eaf5;transition:.25s;cursor:pointer}
+  .svc-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(26,95,168,.12);border-color:var(--brand-blue)}
+  .svc-icon{width:52px;height:52px;border-radius:12px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
+  .svc-icon.blue{background:var(--brand-light)}
+  .svc-icon.green{background:#e8faf3}
+  .svc-card h3{font-size:15px;font-weight:600;color:var(--brand-dark);margin-bottom:8px}
+  .svc-card p{font-size:13px;color:var(--text-mid);line-height:1.6}
+  .why-section{padding:60px 32px;max-width:960px;margin:0 auto;text-align:center}
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;margin-top:36px}
+  .why-card{padding:24px 16px;border-radius:12px;background:var(--gray)}
+  .why-num{font-size:32px;font-weight:800;color:var(--brand-blue);margin-bottom:6px}
+  .why-num.green{color:var(--brand-green)}
+  .why-card p{font-size:13px;color:var(--text-mid)}
+  .cta-strip{background:linear-gradient(90deg,var(--brand-dark),var(--brand-blue));padding:48px 32px;text-align:center}
+  .cta-strip h2{color:#fff;font-size:26px;font-weight:700;margin-bottom:12px}
+  .cta-strip p{color:rgba(255,255,255,.75);font-size:15px;margin-bottom:24px}
+  .phone-big{font-size:24px;font-weight:800;color:#4dd9a2;margin-bottom:20px}
+
+  /* SERVICES */
+  .page-hero{background:linear-gradient(135deg,var(--brand-dark),var(--brand-blue));padding:52px 32px;text-align:center}
+  .page-hero h1{color:#fff;font-size:32px;font-weight:700;margin-bottom:10px}
+  .page-hero p{color:rgba(255,255,255,.75);font-size:15px}
+  .services-full{padding:52px 32px;max-width:960px;margin:0 auto}
+  .svc-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+  .svc-big-card{border-radius:14px;border:1px solid #e2eaf5;overflow:hidden;background:#fff}
+  .svc-big-head{padding:20px 24px;display:flex;align-items:center;gap:14px}
+  .svc-big-head.blue-bg{background:linear-gradient(90deg,var(--brand-dark),var(--brand-blue))}
+  .svc-big-head.green-bg{background:linear-gradient(90deg,#0d6e47,var(--brand-green))}
+  .svc-big-head h3{color:#fff;font-size:16px;font-weight:600}
+  .svc-icon-lg{width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .svc-big-body{padding:20px 24px}
+  .svc-big-body p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:14px}
+  .svc-features{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .svc-features li{font-size:13px;color:var(--text-dark);display:flex;align-items:center;gap:8px}
+  .svc-features li::before{content:'';width:18px;height:18px;border-radius:50%;background:var(--brand-green);flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+  .pricing-section{background:var(--gray);padding:52px 32px;text-align:center}
+  .pricing-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:800px;margin:32px auto 0}
+  .price-card{background:#fff;border-radius:12px;padding:28px 20px;border:2px solid #e2eaf5}
+  .price-card.featured{border-color:var(--brand-blue)}
+  .price-label{font-size:12px;color:var(--text-light);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+  .price-val{font-size:28px;font-weight:800;color:var(--brand-dark);margin-bottom:4px}
+  .price-val span{font-size:14px;font-weight:400;color:var(--text-mid)}
+  .price-card p{font-size:13px;color:var(--text-mid);margin-top:10px}
+
+  /* GALLERY */
+  .gallery-section{padding:52px 32px;max-width:960px;margin:0 auto}
+  .gallery-filters{display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap}
+  .filter-btn{padding:8px 18px;border-radius:20px;border:1px solid #e2eaf5;background:#fff;font-size:13px;cursor:pointer;transition:.2s;color:var(--text-mid)}
+  .filter-btn:hover,.filter-btn.active{background:var(--brand-blue);color:#fff;border-color:var(--brand-blue)}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .gal-item{border-radius:12px;overflow:hidden;position:relative;aspect-ratio:4/3;cursor:pointer}
+  .gal-before-after{display:grid;grid-template-columns:1fr 1fr;height:100%;background:#1a1a2e}
+  .gal-side{display:flex;align-items:center;justify-content:center;flex-direction:column;padding:12px}
+  .gal-side.before{background:linear-gradient(135deg,#2c2c3e,#1a1a2e)}
+  .gal-side.after{background:linear-gradient(135deg,var(--brand-blue),var(--brand-green))}
+  .gal-label{font-size:9px;font-weight:700;letter-spacing:1px;margin-bottom:6px;opacity:.7;color:#fff}
+  .gal-surface{font-size:11px;font-weight:600;color:#fff;text-align:center}
+  .gal-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.7));padding:12px;opacity:0;transition:.3s}
+  .gal-item:hover .gal-overlay{opacity:1}
+  .gal-overlay span{color:#fff;font-size:12px;font-weight:500}
+  .gal-wide{grid-column:span 2}
+
+  /* CONTACT */
+  .contact-section{padding:52px 32px;max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .contact-info h2{font-size:24px;font-weight:700;color:var(--brand-dark);margin-bottom:16px}
+  .contact-info p{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:24px}
+  .info-row{display:flex;gap:12px;margin-bottom:18px;align-items:flex-start}
+  .info-icon{width:40px;height:40px;border-radius:10px;background:var(--brand-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .info-label{font-size:12px;color:var(--text-light);margin-bottom:2px}
+  .info-val{font-size:14px;font-weight:600;color:var(--brand-dark)}
+  .contact-form{background:var(--gray);border-radius:16px;padding:32px 28px}
+  .contact-form h3{font-size:18px;font-weight:600;color:var(--brand-dark);margin-bottom:4px}
+  .form-sub{font-size:13px;color:var(--text-mid);margin-bottom:24px}
+  .form-group{margin-bottom:16px}
+  .form-group label{display:block;font-size:12px;color:var(--text-mid);margin-bottom:6px;font-weight:500}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 14px;border:1px solid #e2eaf5;border-radius:8px;font-size:14px;background:#fff;color:var(--text-dark);outline:none;transition:.2s}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--brand-blue);box-shadow:0 0 0 3px rgba(26,95,168,.1)}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-group textarea{min-height:100px;resize:vertical}
+  .submit-btn{width:100%;background:linear-gradient(90deg,var(--brand-blue),var(--brand-green));color:#fff;border:none;padding:13px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:.2s}
+  .submit-btn:hover{opacity:.9;transform:translateY(-1px)}
+  .map-section{background:var(--gray);padding:0 32px 52px;max-width:900px;margin:0 auto}
+  .map-box{border-radius:14px;overflow:hidden;border:1px solid #e2eaf5;height:240px;background:linear-gradient(135deg,var(--brand-light),#d4edff);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}
+  .map-box p{font-size:14px;color:var(--text-mid)}
+  .map-pin{width:40px;height:40px;background:var(--brand-blue);border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center}
+  .map-pin::after{content:'';width:14px;height:14px;background:#fff;border-radius:50%}
+
+  footer{background:var(--brand-dark);color:rgba(255,255,255,.7);text-align:center;padding:28px 32px;font-size:13px}
+  footer strong{color:#4dd9a2}
+
+  .success-msg{display:none;background:#e8faf3;border:1px solid var(--brand-green);border-radius:10px;padding:16px;text-align:center;color:var(--brand-dark);font-size:14px;font-weight:500;margin-top:14px}
+
+  @media(max-width:640px){
+    .svc-row{grid-template-columns:1fr}
+    .gallery-grid{grid-template-columns:repeat(2,1fr)}
+    .gal-wide{grid-column:span 1}
+    .contact-section{grid-template-columns:1fr}
+    .form-row{grid-template-columns:1fr}
+    nav ul{display:none}
+    .hero h1{font-size:26px}
+  }
+</style>
+
+<nav>
+  <div class="logo-area">
+    <div class="logo-circle">MAW</div>
+    <div class="logo-text">Melbourne Acid Washing<span>Professional Cleaning Services</span></div>
+  </div>
+  <ul>
+    <li><a href="#" class="active" onclick="showPage('home',this)">Home</a></li>
+    <li><a href="#" onclick="showPage('services',this)">Services</a></li>
+    <li><a href="#" onclick="showPage('gallery',this)">Gallery</a></li>
+    <li><a href="#" onclick="showPage('contact',this)">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page active">
+  <div class="hero">
+    <h1>Melbourne's #1 <span>Acid Washing</span><br>& Pressure Cleaning</h1>
+    <p>Professional home & commercial cleaning across Melbourne. We specialise in concrete, brick, render, driveways, oil & rust stain removal. Reliable results, notable service & free quotes.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="showPage('contact',null)">Get Free Quote <span class="badge-20">20% OFF</span></button>
+      <button class="btn-outline" onclick="showPage('services',null)">Our Services</button>
+    </div>
+  </div>
+  <div class="trust-bar">
+    <div class="trust-item"><div class="icon">✓</div> Licensed & Insured</div>
+    <div class="trust-item"><div class="icon">★</div> 5-Star Rated Service</div>
+    <div class="trust-item"><div class="icon">✓</div> Free Quotes</div>
+    <div class="trust-item"><div class="icon">✓</div> Residential & Industrial</div>
+    <div class="trust-item"><div class="icon">✓</div> Melbourne Wide</div>
+  </div>
+  <div class="services-preview">
+    <div class="section-title">What We Do</div>
+    <div class="section-sub">Complete exterior cleaning solutions for every surface</div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon blue">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a5fa8" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 3-1.5 5.5-3.5 7.5"/><path d="M7 6s1 2 1 4-1 4-1 4M12 4v16"/></svg>
+        </div>
+        <h3>Pressure Cleaning</h3>
+        <p>High-pressure water blasting for driveways, paths, patios and all outdoor surfaces.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon green">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2e9e6e" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
+        <h3>Acid Washing</h3>
+        <p>Expert acid treatment to deep clean and restore concrete, brick and stone surfaces.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon blue">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a5fa8" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Oil & Rust Stain Removal</h3>
+        <p>Specialised treatment to remove tough oil, rust and industrial stains from any surface.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon green">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2e9e6e" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <h3>Brick & Render</h3>
+        <p>Safe cleaning of brick, render and rendered walls — restore your home's exterior.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon blue">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a5fa8" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/></svg>
+        </div>
+        <h3>Driveway Resurfacing</h3>
+        <p>Full driveway restoration — cleaning, sealing and pressure washing for lasting results.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon green">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2e9e6e" stroke-width="2"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg>
+        </div>
+        <h3>Industrial Cleaning</h3>
+        <p>Heavy-duty industrial and commercial cleaning for warehouses, factories and large sites.</p>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="showPage('services',null)" style="padding:12px 32px">View All Services</button>
+  </div>
+  <div class="why-section">
+    <div class="section-title">Why Choose Us?</div>
+    <div class="section-sub">Melbourne trusts us for quality, reliability and great value</div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-num">500+</div><p>Happy Customers across Melbourne</p></div>
+      <div class="why-card"><div class="why-num green">5★</div><p>Average rating on Google & Facebook</p></div>
+      <div class="why-card"><div class="why-num">10+</div><p>Years of professional experience</p></div>
+      <div class="why-card"><div class="why-num green">FREE</div><p>No-obligation quotes every time</p></div>
+    </div>
+  </div>
+  <div class="cta-strip">
+    <h2>Ready to Transform Your Property?</h2>
+    <p>Get in touch today for a free, no-obligation quote. We service all Melbourne suburbs.</p>
+    <div class="phone-big">📞 +61 401 561 317</div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <button class="btn-primary" onclick="showPage('contact',null)">Get Free Quote</button>
+      <a href="https://wa.me/61401561317" style="text-decoration:none"><button class="btn-outline">WhatsApp Us</button></a>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services" class="page">
+  <div class="page-hero">
+    <h1>Our Services</h1>
+    <p>Professional cleaning for every surface — residential, commercial & industrial</p>
+  </div>
+  <div class="services-full">
+    <div class="svc-row">
+      <div class="svc-big-card">
+        <div class="svc-big-head blue-bg">
+          <div class="svc-icon-lg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 3-1.5 5.5-3.5 7.5"/><path d="M7 6s1 2 1 4-1 4-1 4"/></svg></div>
+          <h3>Pressure Cleaning</h3>
+        </div>
+        <div class="svc-big-body">
+          <p>High-pressure water blasting cuts through years of grime, mould, algae and dirt — restoring your surfaces to like-new condition without damaging them.</p>
+          <ul class="svc-features">
+            <li>Driveways & footpaths</li>
+            <li>Patios, decks & pool areas</li>
+            <li>Fences & retaining walls</li>
+            <li>Commercial car parks</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-big-card">
+        <div class="svc-big-head green-bg">
+          <div class="svc-icon-lg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+          <h3>Acid Washing</h3>
+        </div>
+        <div class="svc-big-body">
+          <p>Our professional acid washing service uses safe yet powerful solutions to deep clean concrete, brick, and tile — removing mineral stains and efflorescence that pressure cleaning can't touch.</p>
+          <ul class="svc-features">
+            <li>Concrete & exposed aggregate</li>
+            <li>Brick & paver restoration</li>
+            <li>Tile & grout cleaning</li>
+            <li>Pool surrounds & coping</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-big-card">
+        <div class="svc-big-head blue-bg">
+          <div class="svc-icon-lg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></div>
+          <h3>Oil & Rust Stain Removal</h3>
+        </div>
+        <div class="svc-big-body">
+          <p>Specialised chemical treatments that break down and lift even the most stubborn oil spills, rust stains and industrial residues from concrete and paved surfaces.</p>
+          <ul class="svc-features">
+            <li>Garage & driveway oil stains</li>
+            <li>Rust from metal fixtures</li>
+            <li>Industrial contamination</li>
+            <li>Tyre mark removal</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-big-card">
+        <div class="svc-big-head green-bg">
+          <div class="svc-icon-lg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <h3>Brick & Render Cleaning</h3>
+        </div>
+        <div class="svc-big-body">
+          <p>Safe, low-pressure soft washing and specialist solutions to clean rendered walls, face bricks and sandstone without causing any damage or surface erosion.</p>
+          <ul class="svc-features">
+            <li>Rendered home exteriors</li>
+            <li>Face brick & heritage brick</li>
+            <li>Sandstone & limestone</li>
+            <li>Paint & graffiti removal</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-big-card">
+        <div class="svc-big-head blue-bg">
+          <div class="svc-icon-lg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/></svg></div>
+          <h3>Driveway Restoration</h3>
+        </div>
+        <div class="svc-big-body">
+          <p>Complete driveway makeover — from deep cleaning and stain removal to sealing and resurfacing. We restore your driveway to its original, pristine look.</p>
+          <ul class="svc-features">
+            <li>Concrete driveways</li>
+            <li>Exposed aggregate</li>
+            <li>Paved & cobblestone</li>
+            <li>Sealing & protection</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-big-card">
+        <div class="svc-big-head green-bg">
+          <div class="svc-icon-lg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg></div>
+          <h3>Industrial & Commercial</h3>
+        </div>
+        <div class="svc-big-body">
+          <p>Large-scale cleaning solutions for businesses, industrial facilities, shopping centres and commercial properties. We work around your schedule to minimise disruption.</p>
+          <ul class="svc-features">
+            <li>Warehouses & factories</li>
+            <li>Car parks & loading docks</li>
+            <li>Shopping centres</li>
+            <li>Grease trap & waste areas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pricing-section">
+    <div class="section-title">Transparent Pricing</div>
+    <div class="section-sub">All quotes are free — prices vary by job size. Call or message for your quote.</div>
+    <div class="pricing-cards">
+      <div class="price-card">
+        <div class="price-label">Driveway</div>
+        <div class="price-val">From $150<span> /single</span></div>
+        <p>Standard single driveway pressure clean</p>
+      </div>
+      <div class="price-card featured">
+        <div class="price-label">Home Exterior</div>
+        <div class="price-val">From $350<span> /home</span></div>
+        <p>Full exterior wash including brick & render</p>
+      </div>
+      <div class="price-card">
+        <div class="price-label">Commercial</div>
+        <div class="price-val">POA<span> /site</span></div>
+        <p>Custom quotes for commercial sites</p>
+      </div>
+    </div>
+    <br>
+    <button class="btn-primary" onclick="showPage('contact',null)" style="padding:12px 32px">Get Your Free Quote</button>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div id="gallery" class="page">
+  <div class="page-hero">
+    <h1>Our Work Gallery</h1>
+    <p>Real before & after results from jobs across Melbourne</p>
+  </div>
+  <div class="gallery-section">
+    <div class="gallery-filters">
+      <button class="filter-btn active" onclick="filterGallery('all',this)">All Work</button>
+      <button class="filter-btn" onclick="filterGallery('driveway',this)">Driveways</button>
+      <button class="filter-btn" onclick="filterGallery('brick',this)">Brick & Render</button>
+      <button class="filter-btn" onclick="filterGallery('patio',this)">Patios</button>
+      <button class="filter-btn" onclick="filterGallery('commercial',this)">Commercial</button>
+    </div>
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="gal-item gal-wide" data-cat="driveway">
+        <div class="gal-before-after">
+          <div class="gal-side before"><div class="gal-label">BEFORE</div><div class="gal-surface">Concrete Driveway<br>Heavy Oil Staining</div></div>
+          <div class="gal-side after"><div class="gal-label">AFTER</div><div class="gal-surface">Pressure Cleaned<br>& Acid Washed</div></div>
+        </div>
+        <div class="gal-overlay"><span>Driveway — Toorak</span></div>
+      </div>
+      <div class="gal-item" data-cat="brick">
+        <div class="gal-before-after">
+          <div class="gal-side before"><div class="gal-label">BEFORE</div><div class="gal-surface">Brick Exterior<br>Mould & Grime</div></div>
+          <div class="gal-side after"><div class="gal-label">AFTER</div><div class="gal-surface">Soft Washed<br>Like New</div></div>
+        </div>
+        <div class="gal-overlay"><span>Brick — Brighton</span></div>
+      </div>
+      <div class="gal-item" data-cat="patio">
+        <div class="gal-before-after">
+          <div class="gal-side before"><div class="gal-label">BEFORE</div><div class="gal-surface">Patio Pavers<br>Algae & Stains</div></div>
+          <div class="gal-side after"><div class="gal-label">AFTER</div><div class="gal-surface">Pressure Cleaned<br>& Resealed</div></div>
+        </div>
+        <div class="gal-overlay"><span>Patio — South Yarra</span></div>
+      </div>
+      <div class="gal-item" data-cat="commercial">
+        <div class="gal-before-after">
+          <div class="gal-side before"><div class="gal-label">BEFORE</div><div class="gal-surface">Car Park<br>Oil & Tyre Marks</div></div>
+          <div class="gal-side after"><div class="gal-label">AFTER</div><div class="gal-surface">Industrial Clean<br>Spotless</div></div>
+        </div>
+        <div class="gal-overlay"><span>Car Park — CBD</span></div>
+      </div>
+      <div class="gal-item gal-wide" data-cat="driveway">
+        <div class="gal-before-after">
+          <div class="gal-side before"><div class="gal-label">BEFORE</div><div class="gal-surface">Exposed Aggregate<br>Years of Buildup</div></div>
+          <div class="gal-side after"><div class="gal-label">AFTER</div><div class="gal-surface">Acid Washed<br>& Restored</div></div>
+        </div>
+        <div class="gal-overlay"><span>Driveway — Malvern</span></div>
+      </div>
+      <div class="gal-item" data-cat="brick">
+        <div class="gal-before-after">
+          <div class="gal-side before"><div class="gal-label">BEFORE</div><div class="gal-surface">Render Wall<br>Efflorescence</div></div>
+          <div class="gal-side after"><div class="gal-label">AFTER</div><div class="gal-surface">Acid Treated<br>Restored</div></div>
+        </div>
+        <div class="gal-overlay"><span>Render — Hawthorn</span></div>
+      </div>
+      <div class="gal-item" data-cat="patio">
+        <div class="gal-before-after">
+          <div class="gal-side before"><div class="gal-label">BEFORE</div><div class="gal-surface">Pool Area<br>Black Algae</div></div>
+          <div class="gal-side after"><div class="gal-label">AFTER</div><div class="gal-surface">Deep Cleaned<br>Safe & Clear</div></div>
+        </div>
+        <div class="gal-overlay"><span>Pool Area — Richmond</span></div>
+      </div>
+      <div class="gal-item" data-cat="commercial">
+        <div class="gal-before-after">
+          <div class="gal-side before"><div class="gal-label">BEFORE</div><div class="gal-surface">Warehouse Floor<br>Grease & Grime</div></div>
+          <div class="gal-side after"><div class="gal-label">AFTER</div><div class="gal-surface">Industrial Clean<br>Ready to Use</div></div>
+        </div>
+        <div class="gal-overlay"><span>Warehouse — Dandenong</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <p style="font-size:14px;color:var(--text-mid);margin-bottom:16px">Want to see your property transformed?</p>
+      <button class="btn-primary" onclick="showPage('contact',null)" style="padding:12px 32px">Book a Free Quote</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+  <div class="page-hero">
+    <h1>Contact Us</h1>
+    <p>Get your free, no-obligation quote today — we respond fast!</p>
+  </div>
+  <div class="contact-section">
+    <div class="contact-info">
+      <h2>Get In Touch</h2>
+      <p>We're Melbourne's trusted acid washing and pressure cleaning specialists. Call, WhatsApp or fill in the form and we'll get back to you quickly with a competitive quote.</p>
+      <div class="info-row">
+        <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a5fa8" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.72 3.36 2 2 0 0 1 3.69 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.64a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="info-label">Phone / WhatsApp</div><div class="info-val">+61 401 561 317</div></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a5fa8" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="info-label">Email</div><div class="info-val">melbourne.acid.washing<br>@gmail.com</div></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a5fa8" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="info-label">Service Area</div><div class="info-val">All Melbourne Suburbs, VIC</div></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a5fa8" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
+        <div><div class="info-label">Hours</div><div class="info-val">Mon–Sat: 7am – 6pm<br>Sun: By Appointment</div></div>
+      </div>
+      <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://wa.me/61401561317" style="text-decoration:none"><button class="btn-primary" style="padding:10px 20px;font-size:13px">WhatsApp Us</button></a>
+        <a href="https://www.facebook.com/melbourneacidwashing" style="text-decoration:none"><button class="btn-outline" style="padding:10px 20px;font-size:13px;background:var(--brand-dark);border-color:rgba(255,255,255,.3)">Facebook Page</button></a>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Request a Free Quote</h3>
+      <p class="form-sub">Fill in your details and we'll get back to you within 2 hours</p>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+      </div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+61 4XX XXX XXX"></div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-group"><label>Service Required</label>
+        <select>
+          <option>Select a service...</option>
+          <option>Pressure Cleaning</option>
+          <option>Acid Washing</option>
+          <option>Oil & Rust Stain Removal</option>
+          <option>Brick & Render Cleaning</option>
+          <option>Driveway Restoration</option>
+          <option>Industrial / Commercial</option>
+          <option>Other / Not Sure</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Suburb</label><input type="text" placeholder="e.g. Toorak, Hawthorn..."></div>
+      <div class="form-group"><label>Message / Details</label><textarea placeholder="Describe your job — surface type, approximate size, any specific concerns..."></textarea></div>
+      <button class="submit-btn" onclick="submitForm()">Send My Quote Request</button>
+      <div class="success-msg" id="success-msg">Thank you! We'll be in touch within 2 hours with your free quote.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>Melbourne Acid Washing</strong> — Professional Cleaning Services across Melbourne, VIC<br>
+  <span style="opacity:.6;font-size:12px;margin-top:6px;display:block">📞 +61 401 561 317 &nbsp;|&nbsp; All Melbourne Suburbs &nbsp;|&nbsp; © 2026 Melbourne Acid Washing</span>
+</footer>
+
+<script>
+function showPage(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav ul li a').forEach(a=>a.classList.remove('active'));
+  if(el)el.classList.add('active');
+  else{
+    const map={home:0,services:1,gallery:2,contact:3};
+    const links=document.querySelectorAll('nav ul li a');
+    if(links[map[id]])links[map[id]].classList.add('active');
+  }
+  window.scrollTo(0,0);
+}
+function filterGallery(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.gal-item').forEach(item=>{
+    if(cat==='all'||item.dataset.cat===cat){item.style.display='block'}
+    else{item.style.display='none'}
+  });
+}
+function submitForm(){
+  document.getElementById('success-msg').style.display='block';
+}
+</script>
