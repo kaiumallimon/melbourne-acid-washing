@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
+import { Manrope, Space_Grotesk } from "next/font/google";
 
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import "./globals.css";
 
-const bodyFont = Plus_Jakarta_Sans({
+const bodyFont = Manrope({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
@@ -51,7 +51,7 @@ export default function RootLayout({
       <body className="min-h-full bg-background text-foreground">
         <div className="relative flex min-h-screen flex-col">
           <SiteHeader />
-          <main className="flex-1 pt-18 md:pt-20">{children}</main>
+          <main className="flex-1 pt-20 md:pt-22">{children}</main>
           <SiteFooter />
         </div>
       </body>
