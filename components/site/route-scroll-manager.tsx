@@ -1,7 +1,7 @@
 "use client"
 
-import { usePathname, useSearchParams } from "next/navigation"
-import { useEffect, useMemo, useRef } from "react"
+import { usePathname } from "next/navigation"
+import { useEffect, useRef } from "react"
 
 function scrollStorageKey(routeKey: string) {
   return `scroll:${routeKey}`
@@ -15,12 +15,7 @@ function forceTopScroll() {
 
 export function RouteScrollManager() {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
-
-  const routeKey = useMemo(() => {
-    const search = searchParams.toString()
-    return search ? `${pathname}?${search}` : pathname
-  }, [pathname, searchParams])
+  const routeKey = pathname
 
   const previousRouteRef = useRef<string | null>(null)
   const isHistoryNavigationRef = useRef(false)
