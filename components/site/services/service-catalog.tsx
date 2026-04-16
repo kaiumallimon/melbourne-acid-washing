@@ -104,8 +104,9 @@ export function ServiceCatalog() {
             return (
               <article
                 key={service.slug}
+                id={service.slug}
                 className={cn(
-                  "group relative flex flex-col overflow-hidden border transition-all duration-300",
+                  "group relative flex scroll-mt-28 flex-col overflow-hidden border transition-all duration-300",
                   "rounded-2xl",
                   bento.featured
                     ? [

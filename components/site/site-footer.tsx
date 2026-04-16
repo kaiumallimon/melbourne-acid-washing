@@ -86,10 +86,10 @@ export function SiteFooter() {
             <div className="space-y-6">
               <p className="text-xs font-bold tracking-[0.15em] uppercase text-white">Services</p>
               <nav className="flex flex-col gap-4 text-[15px]">
-                <Link href="/services" className="hover:text-white">Acid Washing</Link>
-                <Link href="/services" className="hover:text-white">Pressure Cleaning</Link>
-                <Link href="/services" className="hover:text-white">Brick Restoration</Link>
-                <Link href="/services" className="hover:text-white">Driveway Cleaning</Link>
+                <Link href="/services#acid-washing" className="hover:text-white">Acid Washing</Link>
+                <Link href="/services#pressure-cleaning" className="hover:text-white">Pressure Cleaning</Link>
+                <Link href="/services#brick-render-cleaning" className="hover:text-white">Brick Restoration</Link>
+                <Link href="/services#driveway-restoration" className="hover:text-white">Driveway Cleaning</Link>
               </nav>
             </div>
 
