@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 
 export function HomeHero() {
     return (
-        <section className="hero-grid-bg relative isolate overflow-hidden pb-28 pt-24 md:pb-32 md:py-45">
+        <section className="relative isolate overflow-hidden pb-28 pt-24 md:pb-32 md:py-45">
             <div className="absolute inset-x-0 top-[-12%] -z-20 h-[66%] bg-[radial-gradient(58%_58%_at_50%_55%,rgba(99,102,241,0.2),transparent_72%)]" />
             <div className="mx-auto flex w-[min(1120px,calc(100%-1.5rem))] flex-col items-center text-center">
                 <Eyebrow className="text-[#5459e8]">Melbourne Surface Cleaning Specialists</Eyebrow>
