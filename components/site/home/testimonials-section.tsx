@@ -51,32 +51,31 @@ export function TestimonialsSection() {
           We have worked with thousands of amazing people
         </h2>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_2fr_1fr]">
-          <div className="grid gap-5 lg:grid-rows-2">
-            <QuoteCard {...testimonials[0]} />
-            <QuoteCard {...testimonials[1]} />
-          </div>
+        <div className="mt-12 grid gap-5 lg:auto-rows-fr lg:grid-cols-4">
+          <QuoteCard {...testimonials[0]} className="lg:col-start-1 lg:row-start-1" />
 
-          <div className="grid gap-5">
-            <QuoteCard {...testimonials[2]} />
-            <div className="grid auto-rows-fr gap-5 md:grid-cols-2">
-              <QuoteCard {...testimonials[3]} compact />
-              <QuoteCard {...testimonials[4]} compact />
-            </div>
-          </div>
+          <QuoteCard
+            {...testimonials[2]}
+            className="lg:col-span-2 lg:col-start-2 lg:row-start-1"
+          />
 
-          <div className="hidden gap-5 lg:grid lg:grid-rows-2">
-            <QuoteCard
-              quote="Excellent quality control. They tested and adjusted pressure around delicate edges before full cleaning."
-              name="Cameron Williamson"
-              handle="@cameronw"
-            />
-            <QuoteCard
-              quote="Fast quote turnaround and no surprises on pricing. Highly recommended for tough stain jobs."
-              name="Jenny Wilson"
-              handle="@jennywilson"
-            />
-          </div>
+          <QuoteCard
+            quote="Excellent quality control. They tested and adjusted pressure around delicate edges before full cleaning."
+            name="Cameron Williamson"
+            handle="@cameronw"
+            className="max-lg:hidden lg:col-start-4 lg:row-start-1"
+          />
+
+          <QuoteCard {...testimonials[1]} className="lg:col-start-1 lg:row-start-2" />
+          <QuoteCard {...testimonials[3]} compact className="lg:col-start-2 lg:row-start-2" />
+          <QuoteCard {...testimonials[4]} compact className="lg:col-start-3 lg:row-start-2" />
+
+          <QuoteCard
+            quote="Fast quote turnaround and no surprises on pricing. Highly recommended for tough stain jobs."
+            name="Jenny Wilson"
+            handle="@jennywilson"
+            className="max-lg:hidden lg:col-start-4 lg:row-start-2"
+          />
         </div>
       </div>
     </section>
@@ -85,9 +84,10 @@ export function TestimonialsSection() {
 
 type QuoteCardProps = Testimonial & {
   compact?: boolean
+  className?: string
 }
 
-function QuoteCard({ quote, name, handle, featured, compact }: QuoteCardProps) {
+function QuoteCard({ quote, name, handle, featured, compact, className }: QuoteCardProps) {
   const initials = `${name.split(" ")[0]?.[0] ?? ""}${name.split(" ")[1]?.[0] ?? ""}`
 
   return (
@@ -95,7 +95,8 @@ function QuoteCard({ quote, name, handle, featured, compact }: QuoteCardProps) {
       className={cn(
         "flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-6 text-slate-100 backdrop-blur-sm",
         featured ? "md:p-8" : "",
-        compact ? "p-5" : ""
+        compact ? "p-5" : "",
+        className
       )}
     >
       <p className={cn("leading-8 text-slate-100", featured ? "text-4xl font-bold leading-tight" : "text-3xl")}> 
