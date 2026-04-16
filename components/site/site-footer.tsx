@@ -95,7 +95,7 @@ export function SiteFooter() {
             <div className="col-span-2 sm:col-span-1">
               <p className="mb-6 text-xs font-bold tracking-[0.15em] text-white uppercase">Contact</p>
               <div className="space-y-3">
-                <a href={PHONE_NUMBER_LINK} className="group grid grid-cols-[2.25rem_1fr] items-start gap-3 border border-white/10 bg-white/[0.03] px-3 py-3 transition hover:border-blue-500/30 hover:bg-blue-500/[0.08]">
+                <a href={PHONE_NUMBER_LINK} className="group grid grid-cols-[2.25rem_1fr] items-start gap-3 border border-white/10 bg-white/3 px-3 py-3 transition hover:border-blue-500/30 hover:bg-blue-500/8">
                   <span className="mt-0.5 flex size-9 items-center justify-center bg-white/5 text-blue-400 transition group-hover:bg-blue-500/10">
                     <PhoneCall className="size-4" />
                   </span>
@@ -105,7 +105,7 @@ export function SiteFooter() {
                   </span>
                 </a>
 
-                <a href={`mailto:${CONTACT_EMAIL}`} className="group grid grid-cols-[2.25rem_1fr] items-start gap-3 border border-white/10 bg-white/[0.03] px-3 py-3 transition hover:border-blue-500/30 hover:bg-blue-500/[0.08]">
+                <a href={`mailto:${CONTACT_EMAIL}`} className="group grid grid-cols-[2.25rem_1fr] items-start gap-3 border border-white/10 bg-white/3 px-3 py-3 transition hover:border-blue-500/30 hover:bg-blue-500/8">
                   <span className="mt-0.5 flex size-9 items-center justify-center bg-white/5 text-blue-400 transition group-hover:bg-blue-500/10">
                     <Mail className="size-4" />
                   </span>
@@ -115,7 +115,7 @@ export function SiteFooter() {
                   </span>
                 </a>
 
-                <div className="grid grid-cols-[2.25rem_1fr] items-start gap-3 border border-white/10 bg-white/[0.03] px-3 py-3">
+                <div className="grid grid-cols-[2.25rem_1fr] items-start gap-3 border border-white/10 bg-white/3 px-3 py-3">
                   <span className="mt-0.5 flex size-9 items-center justify-center bg-white/5 text-blue-400">
                     <MapPin className="size-4" />
                   </span>
