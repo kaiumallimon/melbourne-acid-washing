@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
 import { GalleryBento } from "@/components/site/gallery/gallery-bento"
+import { GalleryHero } from "@/components/site/gallery/gallery-hero"
 import { HomeCta } from "@/components/site/home/home-cta"
-import { PageHero } from "@/components/site/page-hero"
 
 export const metadata: Metadata = {
   title: "Gallery | Melbourne Acid Washing",
@@ -13,12 +13,7 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Gallery"
-        title="Before and after outcomes from real Melbourne cleaning projects"
-        description="Browse the bento gallery to view restoration examples across key surface categories and property types."
-        badgeText="Driveway, brick, patio, and commercial work"
-      />
+      <GalleryHero />
       <GalleryBento />
       <HomeCta />
     </>

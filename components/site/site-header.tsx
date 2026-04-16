@@ -107,7 +107,7 @@ export function SiteHeader() {
               </p>
               <p
                 className={cn(
-                  "mt-1 truncate text-[10px] tracking-[0.15em] uppercase transition-colors duration-300 md:text-[11px]",
+                  "mt-1 truncate text-[10px] tracking-[0.15em] font-semibold uppercase transition-colors duration-300 md:text-[11px]",
                   hasSurface ? "text-slate-400" : "text-slate-500"
                 )}
               >

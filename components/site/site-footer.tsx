@@ -48,7 +48,7 @@ export function SiteFooter() {
                 <p className="truncate font-heading text-base leading-none font-bold text-white md:text-lg">
                   {BUSINESS_NAME}
                 </p>
-                <p className="mt-1 truncate text-[10px] tracking-[0.15em] text-slate-500 uppercase md:text-[11px]">
+                <p className="mt-1 truncate text-[10px] tracking-[0.15em] text-slate-400 font-semibold uppercase md:text-[11px]">
                   Professional Exterior Cleaning
                 </p>
               </div>
