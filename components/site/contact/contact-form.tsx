@@ -1,9 +1,8 @@
 "use client"
 
-import { FormEvent, useMemo, useState } from "react"
+import { FormEvent, MouseEvent, useMemo, useState } from "react"
 import type { ReactNode } from "react"
 
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
   Select,
@@ -86,6 +85,16 @@ export function ContactForm() {
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  const handleSubmitLinkClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+
+    if (!canSubmit || isSubmitting) {
+      return
+    }
+
+    event.currentTarget.closest("form")?.requestSubmit()
   }
 
   return (
@@ -193,14 +202,19 @@ export function ContactForm() {
         />
       </Field>
 
-      <Button
-        type="submit"
-        size="lg"
-        disabled={!canSubmit || isSubmitting}
-        className="w-full rounded-full border border-transparent bg-primary text-white hover:border-primary hover:bg-transparent hover:text-primary"
+      <a
+        href="#contact-form"
+        role="button"
+        aria-disabled={!canSubmit || isSubmitting}
+        onClick={handleSubmitLinkClick}
+        className={
+          !canSubmit || isSubmitting
+            ? "cursor-target inline-flex h-13 w-full items-center justify-center rounded-full border border-transparent bg-primary px-6 font-semibold text-white opacity-55 pointer-events-none"
+            : "cursor-target inline-flex h-13 w-full items-center justify-center rounded-full border border-transparent bg-primary px-6 font-semibold text-white transition-all duration-300 hover:border-primary hover:bg-transparent hover:text-primary"
+        }
       >
         {isSubmitting ? "Sending Quote Request..." : "Send My Quote Request"}
-      </Button>
+      </a>
 
       {successMessage ? (
         <p className="rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700">

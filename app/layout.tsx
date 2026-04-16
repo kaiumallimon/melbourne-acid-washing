@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
 
 import { HomeMotion } from "@/components/site/home/home-motion";
+import { RouteScrollManager } from "@/components/site/route-scroll-manager";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import TargetCursor from "@/components/ui/target-cursor";
@@ -58,6 +59,7 @@ export default function RootLayout({
             parallaxOn
             hoverDuration={0.2}
           />
+          <RouteScrollManager />
           <HomeMotion />
           <SiteHeader />
           <main className="mobile-section-x flex-1">{children}</main>
