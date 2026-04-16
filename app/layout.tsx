@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { Archivo, Nunito_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
 
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import "./globals.css";
 
-const bodyFont = Nunito_Sans({
+const bodyFont = Plus_Jakarta_Sans({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
 
-const headingFont = Archivo({
+const headingFont = Space_Grotesk({
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
-  weight: ["500", "600", "700", "800"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -51,7 +51,7 @@ export default function RootLayout({
       <body className="min-h-full bg-background text-foreground">
         <div className="relative flex min-h-screen flex-col">
           <SiteHeader />
-          <main className="flex-1 pt-26 md:pt-30">{children}</main>
+          <main className="flex-1 pt-18 md:pt-20">{children}</main>
           <SiteFooter />
         </div>
       </body>
