@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
 import { HomeCta } from "@/components/site/home/home-cta"
-import { PageHero } from "@/components/site/page-hero"
+import { TermsHero } from "@/components/site/legal/terms-hero"
 import { SectionShell } from "@/components/site/section-shell"
 
 export const metadata: Metadata = {
@@ -12,12 +12,7 @@ export const metadata: Metadata = {
 export default function TermsAndConditionsPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Legal"
-        title="Terms and Conditions"
-        description="By using our website or requesting services, you agree to the terms below that govern pricing, scheduling, service delivery, and liability."
-        badgeText="Last updated: April 16, 2026"
-      />
+      <TermsHero />
       <SectionShell className="space-y-8">
         <section className="border border-slate-300/70 bg-[#f7f9fd] p-6 md:p-8">
           <p className="text-sm leading-7 text-slate-600 md:text-base">
