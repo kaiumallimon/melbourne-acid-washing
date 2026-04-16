@@ -78,21 +78,25 @@ export function SiteHeader() {
       />
 
       <div className="relative mx-auto w-[min(1240px,calc(100%-1.5rem))]">
-        <div className="flex h-20 items-center gap-3">
+        <div className="flex h-25 items-center gap-3">
           {/* Logo Section */}
           <Link href="/" onClick={() => setIsOpen(false)} className="flex min-w-0 items-center gap-3 group">
-            <Image
-              src="/logo.png"
-              alt={`${BUSINESS_NAME} logo`}
-              width={52}
-              height={52}
+            <span
               className={cn(
-                "size-11 rounded-full object-cover transition-all duration-300 md:size-12",
-                hasSurface ? "border border-white/20" : "border border-slate-300/85"
+                "inline-flex items-center justify-center transition-all duration-300",
               )}
-              priority
-            />
-            <div className="min-w-0 hidden lg:block">
+            >
+              <Image
+                src="/logo.png"
+                alt={`${BUSINESS_NAME} logo`}
+                width={100}
+                height={100}
+                className="allow-rounded border border-primary/20 size-15 object-cover md:size-20"
+                priority
+              />
+            </span>
+
+            <div className="min-w-0 ">
               <p
                 className={cn(
                   "truncate font-heading text-base leading-none font-bold transition-colors duration-300 md:text-lg",
@@ -113,7 +117,7 @@ export function SiteHeader() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-2 md:flex">
+          <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-2 lg:flex">
             {NAV_LINKS.map((link) => {
               const active = linkIsActive(pathname, link.href)
               return (
@@ -142,21 +146,22 @@ export function SiteHeader() {
           </nav>
 
           {/* Desktop CTA */}
-          <Button
-            size={"default"}
-            variant={'default'}
-            onClick={navigateToContact}
-            className={`ml-auto hidden px-5 hover:bg-[#5d79ff] md:inline-flex ${isScrolled ? "bg-transparent border border-muted-foreground text-white" : "bg-primary text-white shadow-sm"}`}
+          <Link
+            href="/contact"
+            className={cn(
+              " ml-auto flex items-center justify-center gap-2 py-2 font-semibold border border-transparent bg-primary px-6 text-white hover:bg-[#4b50d7]"
+            )}
           >
-            Get a Quote
-          </Button>
+            Get Free Quote
+            <ArrowRight className="size-4" />
+          </Link>
 
           {/* Mobile Menu Toggle */}
           <button
             type="button"
             onClick={() => setIsOpen((current) => !current)}
             className={cn(
-              "ml-auto inline-flex size-10 items-center justify-center rounded-full transition-all duration-300 active:scale-90 md:hidden",
+              "ml-auto inline-flex size-10 items-center justify-center rounded-full transition-all duration-300 active:scale-90 lg:hidden",
               hasSurface
                 ? "border border-white/20 bg-white/5 text-white"
                 : "border border-slate-300/85 bg-white text-slate-700 shadow-sm"
@@ -171,7 +176,7 @@ export function SiteHeader() {
       {/* Mobile Backdrop Overlay */}
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-500 md:hidden",
+          "fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-500 lg:hidden",
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         )}
         onClick={() => setIsOpen(false)}
@@ -181,7 +186,7 @@ export function SiteHeader() {
       {/* Enhanced Mobile Sheet */}
       <aside
         className={cn(
-          "fixed inset-y-0 right-0 z-50 w-[min(85vw,380px)] bg-slate-950/95 backdrop-blur-2xl transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden",
+          "fixed inset-y-0 right-0 z-50 w-[min(85vw,380px)] bg-slate-950/95 backdrop-blur-2xl transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden",
           "border-l border-white/10 shadow-2xl",
           isOpen ? "translate-x-0" : "translate-x-full"
         )}
@@ -218,14 +223,14 @@ export function SiteHeader() {
                     "group flex items-center justify-between rounded-2xl px-5 py-4 text-lg font-medium transition-all duration-500",
                     isOpen ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0",
                     active
-                      ? "bg-white/10 text-white ring-1 ring-white/20"
+                      ? "bg-white/10 text-white"
                       : "text-slate-400 hover:bg-white/5 hover:text-white"
                   )}
                 >
                   {link.label}
                   <div className={cn(
-                    "size-1.5 rounded-full transition-all duration-500",
-                    active ? "bg-[--brand-cyan] shadow-[0_0_12px_rgba(34,211,238,0.8)]" : "bg-transparent"
+                    "allow-rounded size-1.5 rounded-full transition-all duration-500",
+                    active ? "bg-primary " : "bg-transparent"
                   )} />
                 </Link>
               )
@@ -243,9 +248,9 @@ export function SiteHeader() {
               onClick={navigateToContact}
               className={cn(
                 "relative w-full overflow-hidden rounded-2xl bg-[--brand-blue] py-7 text-base font-bold text-white transition-all duration-300",
-                "hover:scale-[1.02] active:scale-[0.98] shadow-[0_20px_40px_-12px_rgba(59,130,246,0.3)]",
+                "hover:scale-[1.02] active:scale-[0.98] bg-primary hover:bg-[#5d79ff]",
                 // Shimmer shine effect
-                "before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-150%] hover:before:translate-x-[150%] before:transition-transform before:duration-1000"
+                "before:absolute before:inset-0 before:bg-linear-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-150%] hover:before:translate-x-[150%] before:transition-transform before:duration-1000"
               )}
             >
               <span className="relative z-10 flex items-center justify-center gap-2">

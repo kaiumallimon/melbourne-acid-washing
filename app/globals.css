@@ -133,6 +133,10 @@
     border-radius: 0 !important;
   }
 
+  .allow-rounded {
+    border-radius: 9999px !important;
+  }
+
   html {
     @apply h-full font-sans;
     scroll-behavior: smooth;
