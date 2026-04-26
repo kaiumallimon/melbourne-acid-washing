@@ -6,34 +6,19 @@ import { Eyebrow } from "@/components/typography"
 
 const faqItems = [
   {
-    question: "Do you use acid washing on every job?",
+    question: "How much does a full acid wash cost?",
     answer:
-      "No. We choose method by surface type and contamination level. Acid treatment is only used where appropriate and always controlled.",
+      "Single driveway starts from $200. Standard double driveway is a maximum of $250. Quotes start at $200 and vary depending on the size of the area — for jobs over 100 sqm, the quote will be discounted further and are determined either through photos or in person. For house exterior washing, a standard single-storey 3-bedroom is minimum $250 and maximum $500. For double-storey homes, quotes are determined in person or via photos.",
   },
   {
-    question: "How quickly can I get a quote?",
+    question: "Are your acid washing chemicals safe to use?",
     answer:
-      "Most website enquiries receive a response within 2 hours during business times. Complex commercial jobs may require a site visit.",
+      "Absolutely. We use the highest percentage of concentrated chemicals that are legally available for domestic and public use cases, which comply with Victorian bio-chem regulations. We only invest in the best quality Australian-sourced materials that are completely biodegradable.",
   },
   {
-    question: "Can you remove oil and rust stains from old concrete?",
+    question: "Do you resurface?",
     answer:
-      "Yes, in most cases. We use staged treatment and pressure methods to lift deep stains while protecting the concrete finish.",
-  },
-  {
-    question: "Do you service all Melbourne suburbs?",
-    answer:
-      "Yes. We provide residential, commercial, and industrial exterior cleaning across all Melbourne suburbs.",
-  },
-  {
-    question: "Is the process safe for rendered and painted surfaces?",
-    answer:
-      "Yes, with the right approach. We adjust pressure and chemistry for sensitive finishes and perform controlled spot checks.",
-  },
-  {
-    question: "Do you provide one-off and recurring maintenance cleans?",
-    answer:
-      "Absolutely. You can book a one-off restoration or discuss scheduled maintenance cleaning for homes and business sites.",
+      "We sure do. We provide professional resurfacing using our best Australian-made coloured sealer with the widest colour range in Australia to choose from.",
   },
 ]
 
