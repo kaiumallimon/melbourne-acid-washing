@@ -61,7 +61,7 @@ export function ContactDetails() {
           <Link
             href={FACEBOOK_URL}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className={cn(
               buttonVariants({ variant: "outline", size: "sm" }),
               "h-11 w-full rounded-full border-slate-300 bg-white px-4 text-slate-700 hover:border-primary/30 hover:bg-[--brand-ice]"

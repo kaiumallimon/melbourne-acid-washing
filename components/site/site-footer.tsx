@@ -8,6 +8,8 @@ import { Separator } from "@/components/ui/separator"
 import {
   BUSINESS_NAME,
   CONTACT_EMAIL,
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
   NAV_LINKS,
   PHONE_NUMBER_DISPLAY,
   PHONE_NUMBER_LINK,
@@ -60,10 +62,16 @@ export function SiteFooter() {
 
             <div className="flex items-center gap-4">
               {/* Socials / Secondary CTAs */}
-              <Link href="#" className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-blue-600/20 hover:text-blue-400">
+              <Link href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-blue-600/20 hover:text-blue-400">
                 <FiInstagram className="size-5" />
               </Link>
-              <Link href="#" className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-blue-600/20 hover:text-blue-400">
+              <Link href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-blue-600/20 hover:text-blue-400">
                 <FaFacebook className="size-5" />
               </Link>
             </div>
