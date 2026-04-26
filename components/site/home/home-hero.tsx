@@ -26,7 +26,7 @@ export function HomeHero() {
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(5,15,30,0.55)_100%)]" />
 
             <div className="mx-auto flex w-[min(1120px,calc(100%-1.5rem))] flex-col items-center text-center">
-                <p className="inline-flex items-center gap-2.5 bg-primary/8 px-4 py-1.5 font-heading text-[11px] font-bold tracking-[0.2em] leading-none text-primary uppercase md:text-xs backdrop-blur-md">
+                <p className="inline-flex items-center gap-2.5 bg-primary/8 px-4 py-2.5 md:py-1.5  font-heading text-[11px] font-bold tracking-[0.2em] leading-relaxed md:leading-none text-primary uppercase md:text-xs backdrop-blur-md">
                     <span className="size-1.5 rounded-full bg-primary/60" />
                     Melbourne Surface Cleaning Specialists
                     <span className="size-1.5 rounded-full bg-primary/60" />
