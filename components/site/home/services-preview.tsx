@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { FlaskConical, GaugeCircle, ShieldAlert } from "lucide-react"
 
 import { Eyebrow } from "@/components/typography"
@@ -38,16 +39,13 @@ export function ServicesPreview() {
               </div>
               <div className="relative min-h-90 w-full grow max-lg:mx-auto max-lg:max-w-sm">
                 <div className="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[4.2rem] border-8 border-[#2a3753] bg-[#0a1328] outline outline-white/20">
-                  <div className="grid h-full grid-cols-2">
-                    <div className="flex flex-col justify-between bg-[linear-gradient(145deg,#26344f_0%,#182238_100%)] p-4 text-white">
-                      <p className="text-[10px] tracking-[0.2em] text-slate-300 uppercase">Before</p>
-                      <p className="text-xs text-slate-200">Oil, grime, algae, and embedded dust</p>
-                    </div>
-                    <div className="flex flex-col justify-between bg-[linear-gradient(145deg,#3550a8_0%,#47b4ef_100%)] p-4 text-white">
-                      <p className="text-[10px] tracking-[0.2em] text-cyan-100 uppercase">After</p>
-                      <p className="text-xs">Restored texture and brighter surface finish</p>
-                    </div>
-                  </div>
+                  <Image
+                    src="/work-demo/image-2.png"
+                    alt="Before and after pressure cleaning comparison"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 320px, 420px"
+                  />
                 </div>
               </div>
             </div>
