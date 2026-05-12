@@ -1,0 +1,58 @@
+name: Deploy Next.js (Namecheap)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build Next.js
+        run: npm run build
+
+      - name: Prepare standalone build
+        run: |
+          rm -rf standalone
+          mkdir -p standalone
+          cp -r .next/standalone/. standalone/
+          cp -r public standalone/
+          mkdir -p standalone/.next
+          cp -r .next/static standalone/.next/
+
+      - name: Upload files (SCP)
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          source: "standalone/**"
+          strip_components: 1
+          target: "/home/melbwtty/maw_website"
+
+      - name: Restart Node app
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/melbwtty/maw_website
+            mkdir -p tmp
+            touch tmp/restart.txt
+            
